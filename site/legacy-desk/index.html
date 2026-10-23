@@ -34,6 +34,7 @@ svg { display: block; }
 @media (max-width: 420px) { .wrap { width: calc(100% - 32px); } }
 .measure { max-width: 38em; }
 section { scroll-margin-top: 72px; }
+section[tabindex="-1"]:focus { outline: none; }
 
 .eyebrow { font-size: var(--t-small); letter-spacing: .08em; text-transform: uppercase; font-weight: 700; }
 .section-title { font-family: var(--font-body); font-weight: 400; font-size: var(--t-section); line-height: 1.15; color: var(--black); }
@@ -151,6 +152,16 @@ a.code code { font-size: 13px; }
 @media (max-width: 900px) { .desk-frame { position: static; } .desk-frame iframe { height: 640px; } }
 .can { margin-top: var(--s2); }
 
+.side { display: grid; gap: var(--s4); min-width: 0; }
+details.type-it { margin-top: 0; scroll-margin-top: 96px; }
+.recipe { display: grid; gap: var(--s1); }
+.recipe-h { font-size: var(--t-body); font-weight: 700; color: var(--black); }
+.recipe-steps { counter-reset: step; display: grid; gap: var(--s1); font-size: var(--t-small); }
+.recipe-steps li { counter-increment: step; position: relative; padding-left: var(--s4); }
+.recipe-steps li::before { content: counter(step) "."; position: absolute; left: 0; font-weight: 700; }
+.recipe-steps .fig { white-space: normal; }
+.type-it .also { font-size: var(--t-small); }
+
 details.deeper { margin-top: var(--s5); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); max-width: 46em; }
 details.deeper > summary { cursor: pointer; padding: var(--s3) 0; font-size: var(--t-small); font-weight: 700; color: var(--blue-deep); list-style: none; }
 details.deeper > summary::-webkit-details-marker { display: none; }
@@ -199,10 +210,10 @@ details.deeper[open] > summary::before { content: "\2212\00a0"; }
     <h2 class="section-title" id="code-h">The code</h2>
     <p class="lead measure">Four layers, the way many business apps of its age were built. The screen asks the server for everything; one Java class holds nearly all the rules and talks to the database.</p>
     <ol class="layers">
-      <li><b>Screen</b><span>One page and its script, in the browser.</span><span class="links"><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/resources/static/index.html"><code>index.html</code></a> <a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/resources/static/desk.js"><code>desk.js</code></a></span></li>
-      <li><b>Routes</b><span>Turns each address the screen calls into a call on the rules.</span><span class="links"><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/DeskController.java#L20-L63"><code>DeskController.java</code> lines 20&#8211;63</a></span></li>
-      <li><b>Rules</b><span>Prices, invoices, credit notes, jobs and reports, in one class.</span><span class="links"><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/Desk.java"><code>Desk.java</code></a></span></li>
-      <li><b>Data</b><span>An H2 database in a file. The rules create its eight tables when the app starts, and fill in the sample data the first time.</span><span class="links"><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/Desk.java#L37-L60"><code>Desk.java</code> lines 37&#8211;60</a></span></li>
+      <li><b>Screen</b><span>One page and its script, in the browser.</span><span class="links"><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r18/app/src/main/resources/static/index.html"><code>index.html</code></a> <a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r18/app/src/main/resources/static/desk.js"><code>desk.js</code></a></span></li>
+      <li><b>Routes</b><span>Turns each address the screen calls into a call on the rules.</span><span class="links"><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r18/app/src/main/java/com/ingramtrials/base/DeskController.java#L20-L63"><code>DeskController.java</code> lines 20&#8211;63</a></span></li>
+      <li><b>Rules</b><span>Prices, invoices, credit notes, jobs and reports, in one class.</span><span class="links"><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r18/app/src/main/java/com/ingramtrials/base/Desk.java"><code>Desk.java</code></a></span></li>
+      <li><b>Data</b><span>An H2 database in a file. The rules create its eight tables when the app starts, and fill in the sample data the first time.</span><span class="links"><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r18/app/src/main/java/com/ingramtrials/base/Desk.java#L37-L60"><code>Desk.java</code> lines 37&#8211;60</a></span></li>
     </ol>
 
     <h3 class="sub">Each part of the desk, and the code it runs</h3>
@@ -210,16 +221,16 @@ details.deeper[open] > summary::before { content: "\2212\00a0"; }
       <table class="table parts">
         <thead><tr><th scope="col">On the screen</th><th scope="col">Address it calls</th><th scope="col">Rules</th><th scope="col">What Bob found there</th></tr></thead>
         <tbody>
-          <tr><th scope="row"><span class="mark">1</span> Find customer</th><td><code>GET /api/customers</code><br><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/DeskController.java#L33-L34"><code>DeskController.java</code> lines 33&#8211;34</a></td><td><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/Desk.java#L92-L95"><code>Desk.java</code> lines 92&#8211;95</a></td><td><span class="finding"><a href="../#assess">F-001</a> <span class="sev">critical</span> <span>SQL injection via string-concatenated LIKE clauses in customers() and invoices()</span></span></td></tr>
-          <tr><th scope="row"><span class="mark">2</span> Preview invoice</th><td><code>POST /api/invoices/preview</code><br><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/DeskController.java#L41-L42"><code>DeskController.java</code> lines 41&#8211;42</a></td><td><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/Desk.java#L146-L176"><code>Desk.java</code> lines 146&#8211;176</a>, using <a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/Desk.java#L107-L113"><code>Desk.java</code> lines 107&#8211;113</a></td><td><span class="finding"><a href="../#assess">F-004</a> <span class="sev">high</span> <span>Preview/save bulk-discount off-by-one: qty=100 discounted in preview but not in save</span></span></td></tr>
-          <tr><th scope="row"><span class="mark">3</span> Save invoice</th><td><code>POST /api/invoices</code><br><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/DeskController.java#L43-L45"><code>DeskController.java</code> lines 43&#8211;45</a></td><td><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/Desk.java#L177-L187"><code>Desk.java</code> lines 177&#8211;187</a>, using <a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/Desk.java#L114-L120"><code>Desk.java</code> lines 114&#8211;120</a></td><td><span class="finding"><a href="../#assess">F-013</a> <span class="sev">medium</span> <span>Invoice and credit-request IDs generated via COALESCE MAX+1, no database sequence</span></span></td></tr>
-          <tr><th scope="row"><span class="mark">4</span> Search invoices</th><td><code>GET /api/invoices</code><br><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/DeskController.java#L37-L38"><code>DeskController.java</code> lines 37&#8211;38</a></td><td><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/Desk.java#L129-L133"><code>Desk.java</code> lines 129&#8211;133</a></td><td>F-001 again: the same pattern, in a second place.</td></tr>
-          <tr><th scope="row"><span class="mark">5</span> Create approved request</th><td><code>POST /api/credit-requests</code><br><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/DeskController.java#L48-L50"><code>DeskController.java</code> lines 48&#8211;50</a></td><td><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/Desk.java#L194-L207"><code>Desk.java</code> lines 194&#8211;207</a></td><td><span class="finding"><a href="../#assess">F-008</a> <span class="sev">medium</span> <span>Credit requests auto-approved with no workflow or authorization check</span></span></td></tr>
-          <tr><th scope="row">Run credit notes</th><td><code>POST /api/jobs/credit-notes</code><br><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/DeskController.java#L57-L58"><code>DeskController.java</code> lines 57&#8211;58</a></td><td><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/Desk.java#L220-L225"><code>Desk.java</code> lines 220&#8211;225</a>, then <a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/Desk.java#L242-L255"><code>Desk.java</code> lines 242&#8211;255</a></td><td><span class="finding"><a href="../#assess">F-015</a> <span class="sev">medium</span> <span>Reflective job dispatch uses deprecated Class.newInstance(); no compile-time binding</span></span></td></tr>
-          <tr><th scope="row"><span class="mark">6</span> Run delivered-order invoices</th><td><code>POST /api/jobs/invoices</code><br><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/DeskController.java#L55-L56"><code>DeskController.java</code> lines 55&#8211;56</a></td><td><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/Desk.java#L220-L225"><code>Desk.java</code> lines 220&#8211;225</a>, then <a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/Desk.java#L226-L241"><code>Desk.java</code> lines 226&#8211;241</a></td><td><span class="finding"><a href="../#assess">F-003</a> <span class="sev">high</span> <span>Batch job trigger endpoints unauthenticated in inspected source</span></span></td></tr>
-          <tr><th scope="row"><span class="mark">7</span> Monthly sales</th><td><code>GET /api/reports/monthly</code><br><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/DeskController.java#L59-L60"><code>DeskController.java</code> lines 59&#8211;60</a></td><td><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/Desk.java#L256-L279"><code>Desk.java</code> lines 256&#8211;279</a></td><td><span class="finding"><a href="../#assess">F-016</a> <span class="sev">high</span> <span>H2-specific FORMATDATETIME SQL function used in reporting queries</span></span></td></tr>
-          <tr><th scope="row">Annual GST</th><td><code>GET /api/reports/gst</code><br><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/DeskController.java#L61-L62"><code>DeskController.java</code> lines 61&#8211;62</a></td><td><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/Desk.java#L280-L291"><code>Desk.java</code> lines 280&#8211;291</a></td><td>F-016 again.</td></tr>
-          <tr><th scope="row">Not on the screen: the health check</th><td><code>GET /api/health</code><br><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/DeskController.java#L26-L32"><code>DeskController.java</code> lines 26&#8211;32</a></td><td>None: the routes answer it themselves.</td><td><span class="finding"><a href="../#assess">F-002</a> <span class="sev">high</span> <span>Internal database connection string exposed in /api/health response body</span></span></td></tr>
+          <tr><th scope="row"><span class="mark">1</span> Find customer</th><td><code>GET /api/customers</code><br><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r18/app/src/main/java/com/ingramtrials/base/DeskController.java#L33-L34"><code>DeskController.java</code> lines 33&#8211;34</a></td><td><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r18/app/src/main/java/com/ingramtrials/base/Desk.java#L92-L95"><code>Desk.java</code> lines 92&#8211;95</a></td><td><span class="finding"><a href="../#assess">F-001</a> <span class="sev">critical</span> <span>SQL injection via string-concatenated LIKE clauses in customers() and invoices()</span></span></td></tr>
+          <tr><th scope="row"><span class="mark">2</span> Preview invoice</th><td><code>POST /api/invoices/preview</code><br><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r18/app/src/main/java/com/ingramtrials/base/DeskController.java#L41-L42"><code>DeskController.java</code> lines 41&#8211;42</a></td><td><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r18/app/src/main/java/com/ingramtrials/base/Desk.java#L146-L176"><code>Desk.java</code> lines 146&#8211;176</a>, using <a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r18/app/src/main/java/com/ingramtrials/base/Desk.java#L107-L113"><code>Desk.java</code> lines 107&#8211;113</a></td><td><span class="finding"><a href="../#assess">F-004</a> <span class="sev">high</span> <span>Preview/save bulk-discount off-by-one: qty=100 discounted in preview but not in save</span></span></td></tr>
+          <tr><th scope="row"><span class="mark">3</span> Save invoice</th><td><code>POST /api/invoices</code><br><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r18/app/src/main/java/com/ingramtrials/base/DeskController.java#L43-L45"><code>DeskController.java</code> lines 43&#8211;45</a></td><td><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r18/app/src/main/java/com/ingramtrials/base/Desk.java#L177-L187"><code>Desk.java</code> lines 177&#8211;187</a>, using <a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r18/app/src/main/java/com/ingramtrials/base/Desk.java#L114-L120"><code>Desk.java</code> lines 114&#8211;120</a></td><td><span class="finding"><a href="../#assess">F-013</a> <span class="sev">medium</span> <span>Invoice and credit-request IDs generated via COALESCE MAX+1, no database sequence</span></span></td></tr>
+          <tr><th scope="row"><span class="mark">4</span> Search invoices</th><td><code>GET /api/invoices</code><br><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r18/app/src/main/java/com/ingramtrials/base/DeskController.java#L37-L38"><code>DeskController.java</code> lines 37&#8211;38</a></td><td><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r18/app/src/main/java/com/ingramtrials/base/Desk.java#L129-L133"><code>Desk.java</code> lines 129&#8211;133</a></td><td>F-001 again: the same pattern, in a second place.</td></tr>
+          <tr><th scope="row"><span class="mark">5</span> Create approved request</th><td><code>POST /api/credit-requests</code><br><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r18/app/src/main/java/com/ingramtrials/base/DeskController.java#L48-L50"><code>DeskController.java</code> lines 48&#8211;50</a></td><td><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r18/app/src/main/java/com/ingramtrials/base/Desk.java#L194-L207"><code>Desk.java</code> lines 194&#8211;207</a></td><td><span class="finding"><a href="../#assess">F-008</a> <span class="sev">medium</span> <span>Credit requests auto-approved with no workflow or authorization check</span></span></td></tr>
+          <tr><th scope="row">Run credit notes</th><td><code>POST /api/jobs/credit-notes</code><br><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r18/app/src/main/java/com/ingramtrials/base/DeskController.java#L57-L58"><code>DeskController.java</code> lines 57&#8211;58</a></td><td><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r18/app/src/main/java/com/ingramtrials/base/Desk.java#L220-L225"><code>Desk.java</code> lines 220&#8211;225</a>, then <a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r18/app/src/main/java/com/ingramtrials/base/Desk.java#L242-L255"><code>Desk.java</code> lines 242&#8211;255</a></td><td><span class="finding"><a href="../#assess">F-015</a> <span class="sev">medium</span> <span>Reflective job dispatch uses deprecated Class.newInstance(); no compile-time binding</span></span></td></tr>
+          <tr><th scope="row"><span class="mark">6</span> Run delivered-order invoices</th><td><code>POST /api/jobs/invoices</code><br><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r18/app/src/main/java/com/ingramtrials/base/DeskController.java#L55-L56"><code>DeskController.java</code> lines 55&#8211;56</a></td><td><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r18/app/src/main/java/com/ingramtrials/base/Desk.java#L220-L225"><code>Desk.java</code> lines 220&#8211;225</a>, then <a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r18/app/src/main/java/com/ingramtrials/base/Desk.java#L226-L241"><code>Desk.java</code> lines 226&#8211;241</a></td><td><span class="finding"><a href="../#assess">F-003</a> <span class="sev">high</span> <span>Batch job trigger endpoints unauthenticated in inspected source</span></span></td></tr>
+          <tr><th scope="row"><span class="mark">7</span> Monthly sales</th><td><code>GET /api/reports/monthly</code><br><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r18/app/src/main/java/com/ingramtrials/base/DeskController.java#L59-L60"><code>DeskController.java</code> lines 59&#8211;60</a></td><td><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r18/app/src/main/java/com/ingramtrials/base/Desk.java#L256-L279"><code>Desk.java</code> lines 256&#8211;279</a></td><td><span class="finding"><a href="../#assess">F-016</a> <span class="sev">high</span> <span>H2-specific FORMATDATETIME SQL function used in reporting queries</span></span></td></tr>
+          <tr><th scope="row">Annual GST</th><td><code>GET /api/reports/gst</code><br><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r18/app/src/main/java/com/ingramtrials/base/DeskController.java#L61-L62"><code>DeskController.java</code> lines 61&#8211;62</a></td><td><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r18/app/src/main/java/com/ingramtrials/base/Desk.java#L280-L291"><code>Desk.java</code> lines 280&#8211;291</a></td><td>F-016 again.</td></tr>
+          <tr><th scope="row">Not on the screen: the health check</th><td><code>GET /api/health</code><br><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r18/app/src/main/java/com/ingramtrials/base/DeskController.java#L26-L32"><code>DeskController.java</code> lines 26&#8211;32</a></td><td>None: the routes answer it themselves.</td><td><span class="finding"><a href="../#assess">F-002</a> <span class="sev">high</span> <span>Internal database connection string exposed in /api/health response body</span></span></td></tr>
         </tbody>
       </table>
     </div>
@@ -227,9 +238,9 @@ details.deeper[open] > summary::before { content: "\2212\00a0"; }
 
     <h3 class="sub">Also in the folder</h3>
     <ul class="also">
-      <li><b>Jobs.</b> <a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/resources/jobs.properties"><code>jobs.properties</code></a> names the two job classes, and the rules load whichever one is asked for by its name. A third job class is in no list, and nothing in the app uses the legacy invoice printer class.</li>
-      <li><b>Schedules.</b> <a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/ScheduledJobs.java"><code>ScheduledJobs.java</code></a> would run both jobs every night, but a setting keeps them switched off.</li>
-      <li><b>One test.</b> <a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/test/java/com/ingramtrials/base/DeskMoneyTest.java"><code>DeskMoneyTest.java</code></a> checks how money is rounded, and nothing else.</li>
+      <li><b>Jobs.</b> <a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r18/app/src/main/resources/jobs.properties"><code>jobs.properties</code></a> names the two job classes, and the rules load whichever one is asked for by its name. A third job class is in no list, and nothing in the app uses the legacy invoice printer class.</li>
+      <li><b>Schedules.</b> <a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r18/app/src/main/java/com/ingramtrials/base/ScheduledJobs.java"><code>ScheduledJobs.java</code></a> would run both jobs every night, but a setting keeps them switched off.</li>
+      <li><b>One test.</b> <a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r18/app/src/test/java/com/ingramtrials/base/DeskMoneyTest.java"><code>DeskMoneyTest.java</code></a> checks how money is rounded, and nothing else.</li>
       <li><b>Scripts and documents that came with it.</b> The app's own scripts to build, start and stop it (Step 2) and to start a job by hand. Its scripts and docs folders hold an export script and a customer-accounts document; some of that is out of date on purpose.</li>
     </ul>
     <p class="more"><a class="arrow" href="https://github.com/yeokimsiang/bob-in-action-v2/tree/main/app">The whole app folder</a> <a class="arrow" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/main/app/README.md">The app's README</a></p>
@@ -293,21 +304,38 @@ details.deeper[open] > summary::before { content: "\2212\00a0"; }
     </div>
     <div class="show">
       <div class="desk-frame"><iframe id="desk-frame" src="app/index.html" title="The recorded invoice desk"></iframe></div>
-      <ol class="notes">
-        <li><b>Find customer.</b> Searches the customers as you type. <a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/Desk.java#L92-L95"><code>Desk.java</code> lines 92&#8211;95</a> puts the typed text straight into the database query: <span class="finding"><a href="../#assess">F-001</a> <span class="sev">critical</span> <span>SQL injection via string-concatenated LIKE clauses in customers() and invoices()</span></span></li>
-        <li><b>Preview invoice.</b> Prices the lines with the customer's discount and GST, and saves nothing. Aster Office Supplies, 100 cartons of A4 paper at <b class="fig">10.00</b>: <b class="fig">931.00</b> plus GST <b class="fig">83.79</b>, total <b class="fig">1014.79</b>. The bulk discount starts at 100 here: <a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/Desk.java#L107-L113"><code>Desk.java</code> lines 107&#8211;113</a>.</li>
-        <li><b>Save invoice.</b> Prices the order again with a second copy of the rule, which gives the bulk discount only above 100 (<a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/Desk.java#L114-L120"><code>Desk.java</code> lines 114&#8211;120</a>). The same order saves at <b class="fig">1035.50</b>, not the <b class="fig">1014.79</b> its preview showed. That gap is <span class="finding"><a href="../#assess">F-004</a> <span class="sev">high</span> <span>Preview/save bulk-discount off-by-one: qty=100 discounted in preview but not in save</span></span></li>
-        <li><b>Search invoices.</b> The same pattern as note 1, in <a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/Desk.java#L129-L133"><code>Desk.java</code> lines 129&#8211;133</a>: F-001 again.</li>
-        <li><b>Create approved request.</b> Any amount up to the invoice's subtotal is saved as approved at once, with no one approving it (<a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/Desk.java#L205"><code>Desk.java</code> line 205</a>). Run credit notes then issues it: <b class="fig">CN-2026-00001</b>, <b class="fig">48.50</b> plus GST <b class="fig">4.37</b>, total <b class="fig">52.87</b>. <span class="finding"><a href="../#assess">F-008</a> <span class="sev">medium</span> <span>Credit requests auto-approved with no workflow or authorization check</span></span></li>
-        <li><b>Run delivered-order invoices.</b> Invoices every order delivered the day before the app's fixed date. Order 7001, 101 cartons for Aster, becomes <b class="fig">INV-2026-00002</b> at <b class="fig">1024.94</b>. Anyone who can reach the app can start it: <span class="finding"><a href="../#assess">F-003</a> <span class="sev">high</span> <span>Batch job trigger endpoints unauthenticated in inspected source</span></span></li>
-        <li><b>Monthly sales.</b> Totals a month's invoices and credit notes. On the sample data, October 2026 holds <b class="fig">1</b> invoice, INV-2026-00001 for Merlion Retail, at <b class="fig">528.65</b>. Its query uses an H2 date function that PostgreSQL and most other production databases don't have: <span class="finding"><a href="../#assess">F-016</a> <span class="sev">high</span> <span>H2-specific FORMATDATETIME SQL function used in reporting queries</span></span></li>
-      </ol>
+      <div class="side">
+        <details class="deeper type-it" id="type-it">
+          <summary>Type an order in yourself</summary>
+          <div class="deeper-body">
+            <p>This copy answers only what the real app was asked when we recorded it, so type an order exactly as below. Press Start again first, so the desk begins from the sample data.</p>
+            <div class="recipe" id="type-aster"><p class="recipe-h">Aster Office Supplies</p><ol class="recipe-steps"><li>Customer <b>Aster Office Supplies &#183; Tier A</b>.</li><li>Product <b>A4 paper carton &#183; PAPER-A4</b>, which fills in the unit price <b class="fig">10.00</b>; quantity <b class="fig">100</b>; press <b>Add line</b>.</li><li>Press <b>Preview invoice</b>: total <b class="fig">1014.79</b>. Or <b>Save invoice</b>: <b class="fig">1035.50</b>, the gap in note 3.</li></ol></div>
+            <div class="recipe" id="type-merlion"><p class="recipe-h">Merlion Retail</p><ol class="recipe-steps"><li>Customer <b>Merlion Retail &#183; Tier B</b>.</li><li>Product <b>Black toner cartridge &#183; TONER-BK</b>, which fills in the unit price <b class="fig">50.00</b>; quantity <b class="fig">10</b>; press <b>Add line</b>.</li><li>Press <b>Preview invoice</b>: total <b class="fig">528.65</b>.</li></ol></div>
+            <div class="recipe" id="type-straits"><p class="recipe-h">Straits Workshop</p><ol class="recipe-steps"><li>Customer <b>Straits Workshop &#183; Tier C</b>.</li><li>Product <b>USB cable pack &#183; CABLE-USB</b>, which fills in the unit price <b class="fig">3.3350</b>; quantity <b class="fig">3</b>; press <b>Add line</b>.</li><li>Then product <b>A4 paper carton &#183; PAPER-A4</b>, which fills in the unit price <b class="fig">10.00</b>; quantity <b class="fig">101</b>; press <b>Add line</b>.</li><li>Press <b>Preview invoice</b>: total <b class="fig">1089.79</b>.</li></ol></div>
+            <div class="recipe" id="type-credit"><p class="recipe-h">The credit request</p><ol class="recipe-steps"><li>Under Credit requests and notes, type Invoice ID <b class="fig">1001</b>, Net amount <b class="fig">48.50</b> and Reason <b class="fig">Two cartons damaged in transit</b>.</li><li>Press <b>Create approved request</b>, then <b>Run credit notes</b> under Operations: <b class="fig">CN-2026-00001</b>, total <b class="fig">52.87</b>.</li></ol></div>
+            <ul class="also">
+              <li>Leave each unit price as the product fills it in, and add the lines in the order given.</li>
+              <li>The message &#8220;lines must contain 1 to 50 entries&#8221; means no line was added yet: press <b>Add line</b> before Preview invoice.</li>
+              <li>A line typed wrong: press <b>Remove</b> beside it and add it again. After a save, press Start again before the next order.</li>
+            </ul>
+          </div>
+        </details>
+        <ol class="notes">
+          <li><b>Find customer.</b> Searches the customers as you type. <a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r18/app/src/main/java/com/ingramtrials/base/Desk.java#L92-L95"><code>Desk.java</code> lines 92&#8211;95</a> puts the typed text straight into the database query: <span class="finding"><a href="../#assess">F-001</a> <span class="sev">critical</span> <span>SQL injection via string-concatenated LIKE clauses in customers() and invoices()</span></span></li>
+          <li><b>Preview invoice.</b> Prices the lines with the customer's discount and GST, and saves nothing. Aster Office Supplies, 100 cartons of A4 paper at <b class="fig">10.00</b>: <b class="fig">931.00</b> plus GST <b class="fig">83.79</b>, total <b class="fig">1014.79</b>. The bulk discount starts at 100 here: <a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r18/app/src/main/java/com/ingramtrials/base/Desk.java#L107-L113"><code>Desk.java</code> lines 107&#8211;113</a>.</li>
+          <li><b>Save invoice.</b> Prices the order again with a second copy of the rule, which gives the bulk discount only above 100 (<a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r18/app/src/main/java/com/ingramtrials/base/Desk.java#L114-L120"><code>Desk.java</code> lines 114&#8211;120</a>). The same order saves at <b class="fig">1035.50</b>, not the <b class="fig">1014.79</b> its preview showed. That gap is <span class="finding"><a href="../#assess">F-004</a> <span class="sev">high</span> <span>Preview/save bulk-discount off-by-one: qty=100 discounted in preview but not in save</span></span></li>
+          <li><b>Search invoices.</b> The same pattern as note 1, in <a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r18/app/src/main/java/com/ingramtrials/base/Desk.java#L129-L133"><code>Desk.java</code> lines 129&#8211;133</a>: F-001 again.</li>
+          <li><b>Create approved request.</b> Any amount up to the invoice's subtotal is saved as approved at once, with no one approving it (<a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r18/app/src/main/java/com/ingramtrials/base/Desk.java#L205"><code>Desk.java</code> line 205</a>). Run credit notes then issues it: <b class="fig">CN-2026-00001</b>, <b class="fig">48.50</b> plus GST <b class="fig">4.37</b>, total <b class="fig">52.87</b>. <span class="finding"><a href="../#assess">F-008</a> <span class="sev">medium</span> <span>Credit requests auto-approved with no workflow or authorization check</span></span></li>
+          <li><b>Run delivered-order invoices.</b> Invoices every order delivered the day before the app's fixed date. Order 7001, 101 cartons for Aster, becomes <b class="fig">INV-2026-00002</b> at <b class="fig">1024.94</b>. Anyone who can reach the app can start it: <span class="finding"><a href="../#assess">F-003</a> <span class="sev">high</span> <span>Batch job trigger endpoints unauthenticated in inspected source</span></span></li>
+          <li><b>Monthly sales.</b> Totals a month's invoices and credit notes. On the sample data, October 2026 holds <b class="fig">1</b> invoice, INV-2026-00001 for Merlion Retail, at <b class="fig">528.65</b>. Its query uses an H2 date function that PostgreSQL and most other production databases don't have: <span class="finding"><a href="../#assess">F-016</a> <span class="sev">high</span> <span>H2-specific FORMATDATETIME SQL function used in reporting queries</span></span></li>
+        </ol>
+      </div>
     </div>
     <div class="can">
       <h3 class="sub">What this copy can show</h3>
       <ul class="also">
         <li>Lists, an invoice's details, searches for any part of a customer's name or an invoice number, and both reports for 2026 answer as the real app did on the sample data.</li>
-        <li>Preview, Save, credit requests and the two jobs answer for the recorded orders: use Try this order first. After a save, request or job, the lists and reports show its result.</li>
+        <li>Preview, Save, credit requests and the two jobs answer for the recorded orders: use Try this order, or type one in exactly as its steps say. After a save, request or job, the lists and reports show its result.</li>
         <li>Anything else, such as another quantity, gets a note that this copy cannot show it: answering would mean rewriting the app's rules in the browser. For that, start the real app (Step 2).</li>
       </ul>
     </div>
@@ -343,13 +371,47 @@ details.deeper[open] > summary::before { content: "\2212\00a0"; }
     order: "Filled in. Now press Preview invoice or Save invoice on the screen.",
     credit: "Filled in. Now press Create approved request, then Run credit notes under Operations."
   };
-  var OFF_SCRIPT = "That was not recorded, so this copy cannot answer it. Use Try this order, or start the real app (Step 2).";
+  // Each warning ends with a link to the typing steps; it stays until a later change is answered.
+  var WARN = {
+    "not-recorded": function () { return "That was not recorded, so this copy cannot answer it. Use Try this order, or follow "; },
+    refused: function (text) {
+      return "The real app refused this too" + (text ? ": “" + text + "”" : "") + ". To see an order go through, follow ";
+    }
+  };
+  var warned = false;
+  var steps = document.getElementById("type-it");
+
+  function warn(type, text) {
+    note.textContent = WARN[type](text);
+    var link = document.createElement("a");
+    link.href = "#type-it";
+    link.textContent = "Type an order in yourself";
+    note.appendChild(link);
+    note.appendChild(document.createTextNode("."));
+    warned = true;
+  }
+
+  // A link within the page replaces the address instead of adding a step to the history, as a Try does, so
+  // Back still leaves the page. A link to the typing steps opens them; focus goes where a link lands.
+  document.addEventListener("click", function (event) {
+    var link = event.target.closest && event.target.closest('a[href^="#"]');
+    var target = link && document.getElementById(link.getAttribute("href").slice(1));
+    if (!target) return;
+    event.preventDefault();
+    if (target === steps) steps.open = true;
+    window.history.replaceState(window.history.state, "", link.getAttribute("href"));
+    target.scrollIntoView({ block: "start" });
+    var focus = target === steps ? steps.querySelector("summary") : target;
+    if (!focus.matches("a, button, summary, [tabindex]")) focus.setAttribute("tabindex", "-1");
+    focus.focus({ preventScroll: true });
+  });
 
   buttons.forEach(function (button) {
     button.setAttribute("aria-pressed", "false");
     button.addEventListener("click", function () {
       chosen = button.getAttribute("data-try");
       loads += 1;
+      warned = false;
       note.textContent = chosen ? "" : "Back to the sample data.";
       buttons.forEach(function (other) {
         other.setAttribute("aria-pressed", String(other === button && chosen !== ""));
@@ -367,7 +429,11 @@ details.deeper[open] > summary::before { content: "\2212\00a0"; }
       // On a narrow screen the desk sits below the buttons, out of sight: bring the note and the desk up.
       if (window.matchMedia("(max-width: 900px)").matches) note.scrollIntoView({ block: "start" });
     }
-    if (event.data.type === "not-recorded") note.textContent = OFF_SCRIPT;
+    if (WARN.hasOwnProperty(event.data.type)) warn(event.data.type, String(event.data.text || ""));
+    if (event.data.type === "answered" && warned) {
+      note.textContent = "";
+      warned = false;
+    }
   });
 
   function page(url) {

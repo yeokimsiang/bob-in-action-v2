@@ -7,7 +7,7 @@
   var R = window.DESK_RECORDING;
   var state = R.start;
   var NOTE = "Not recorded: this copy replays answers the real app gave, so it can only show those. " +
-    "Use a Try this order button beside the desk, or start the real app yourself (Start it).";
+    "Use Try this order or type an order in as the steps beside the desk say, or start the real app yourself (Start it).";
 
   function canonical(value) {
     if (Array.isArray(value)) return "[" + value.map(canonical).join(",") + "]";
@@ -47,17 +47,23 @@
     return number === undefined ? null : R.answers[number];
   }
 
-  function tell(message) {
-    if (window.parent !== window) window.parent.postMessage({ source: "legacy-desk", type: message }, "*");
+  function tell(message, text) {
+    if (window.parent !== window) window.parent.postMessage({ source: "legacy-desk", type: message, text: text || "" }, "*");
   }
 
   window.fetch = function (url, options) {
-    var found = answer(keyOf(url, options));
+    var key = keyOf(url, options);
+    var found = answer(key);
     if (!found) {
       tell("not-recorded");
       return Promise.resolve(new Response(JSON.stringify({ message: NOTE }), {
         status: 404, headers: { "Content-Type": "application/json" }
       }));
+    }
+    // A preview, save, request or job: the page says whether the real app refused it too, and in what words.
+    if (key.indexOf("GET ") !== 0) {
+      if (found.status >= 400) tell("refused", found.body && found.body.message);
+      else tell("answered");
     }
     var text = "body" in found ? JSON.stringify(found.body) : found.text;
     return Promise.resolve(new Response(text, { status: found.status, headers: { "Content-Type": "application/json" } }));
