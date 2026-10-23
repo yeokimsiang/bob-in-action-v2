@@ -11,7 +11,7 @@ dotnet build targets/dotnet/PreviewApi.csproj --configuration Release --nologo
 dotnet test targets/dotnet/tests/PreviewApi.Tests/PreviewApi.Tests.csproj --configuration Release --nologo
 ```
 
-Verified here: `Passed! - Failed: 0, Passed: 32` with the .NET 10 SDK.
+The tests pass: `Passed! - Failed: 0, Passed: 32` with the .NET 10 SDK.
 
 ## Run
 
@@ -44,7 +44,7 @@ On macOS or Linux, send each with curl, for example the first:
 curl -s -w ' HTTP %{http_code}\n' -H 'Content-Type: application/json' -d '{"customerId":1,"lines":[{"productCode":"PAPER-A4","qty":100,"unitPrice":"10.00"}]}' http://127.0.0.1:18083/api/invoice-preview
 ```
 
-What it answered when we recorded it on 23 October 2026 (.NET SDK 10.0.402), beside the legacy app's answer to the same order:
+Its answers, recorded with .NET SDK 10.0.402, beside the legacy app's answers to the same orders:
 
 | Order | This service | The legacy app |
 |---|---|---|

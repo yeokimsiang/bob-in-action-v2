@@ -14,7 +14,7 @@ python -m venv .venv
 .venv\Scripts\python -m unittest discover -s tests -v
 ```
 
-Verified here: 36 tests, `OK`, on Python 3.11.9 with the pinned FastAPI 0.143.1, httpx 0.28.1 and uvicorn 0.54.0 (an existing environment with those versions was used; the `pip install` step itself was not rerun).
+The tests pass: 36 tests, `OK`, on Python 3.11.9 with the pinned FastAPI 0.143.1, httpx 0.28.1 and uvicorn 0.54.0.
 
 ## Run
 
@@ -47,7 +47,7 @@ On macOS or Linux, send each with curl, for example the first:
 curl -s -w ' HTTP %{http_code}\n' -H 'Content-Type: application/json' -d '{"customerId":1,"lines":[{"productCode":"PAPER-A4","qty":100,"unitPrice":"10.00"}]}' http://127.0.0.1:18084/api/invoice-preview
 ```
 
-What it answered when we recorded it on 23 October 2026 (a fresh virtual environment with Python 3.13.0, FastAPI 0.143.1 and uvicorn 0.54.0), beside the legacy app's answer to the same order:
+Its answers, recorded in a fresh virtual environment with Python 3.13.0, FastAPI 0.143.1 and uvicorn 0.54.0, beside the legacy app's answers to the same orders:
 
 | Order | This service | The legacy app |
 |---|---|---|

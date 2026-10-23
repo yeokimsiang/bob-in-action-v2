@@ -1,11 +1,11 @@
-# Synthetic MCP servers
+# Mock MCP servers
 
 Four read-only stdio MCP servers with invented demonstration data. They stand in for the systems an SI would normally consult (a staff roster, a rate card, a help-desk queue, timesheets) and connect to no real system.
 
 | Server | Data | Tools | Used by |
 |---|---|---|---|
 | `roster` | `data/roster.json` (Synthetic Engineer 01-12) | `roster_list_people`, `roster_find_by_skill`, `roster_availability` | `/plan`, `/price` |
-| `ratecard` | the synthetic SGD rate card in `tools/commercial/server.py` | `ratecard_get`, `ratecard_roles` | `/price` |
+| `ratecard` | the demonstration SGD rate card in `tools/commercial/server.py` | `ratecard_get`, `ratecard_roles` | `/price` |
 | `tickets` | `data/tickets.json` (help-desk reports) | `tickets_search`, `tickets_get`, `incidents_list` | `/assess` |
 | `timesheets` | `data/timesheets.json` (Java invoice-preview pilot) | `timesheets_list_entries`, `timesheets_pilot_summary` | `/price` |
 

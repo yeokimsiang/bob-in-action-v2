@@ -36,75 +36,70 @@ First: who is Bob right now? That's the
 mode, defined in custom modes dot yaml.
 
 8
-00:01:04.241 --> 00:01:05.795
-Second: what does he know?
+00:01:04.241 --> 00:01:11.710
+Second: what does he know? That depends on the root AGENTS
+file, the rules and the skills, and on where each one sits.
 
 9
-00:01:05.795 --> 00:01:11.710
-That depends on the root AGENTS file, the rules and
-the skills, and on exactly where each one sits.
-
-10
 00:01:11.750 --> 00:01:19.884
 The root AGENTS.md is already in his context. Our
 probe copy's version holds one codeword rule.
 
-11
+10
 00:01:19.884 --> 00:01:24.080
 Bob replied KIWI-ROOT-AGENTS, with no tool calls.
 
-12
+11
 00:01:24.120 --> 00:01:31.190
 Bob's own /init drafted the kit's version. bob run
 doesn't expand /init, so we piped its prompt in.
 
-13
+12
 00:01:31.190 --> 00:01:34.190
 Bob read the repository and wrote a draft.
 
-14
-00:02:55.841 --> 00:03:04.258
+13
+00:02:55.736 --> 00:03:04.153
 Third: what can he reach? The files you
 hide from him, and the servers you connect.
 
-15
-00:03:15.220 --> 00:03:16.803
+14
+00:03:15.120 --> 00:03:16.713
 No MCP tool is pre-approved.
 
-16
-00:03:16.803 --> 00:03:22.230
+15
+00:03:16.713 --> 00:03:22.174
 alwaysAllow is empty, and the guard hook's code
 allows only a short list of read-only MCP tools.
 
-17
-00:03:22.230 --> 00:03:23.700
-MCP was off in our probes.
-
-18
-00:03:23.740 --> 00:03:33.750
+16
+00:03:22.214 --> 00:03:32.230
 Fourth: what may he do? Past the mode's edit rule, we watched
 two layers: the wording of the rules, and the guard hook.
 
-19
-00:03:33.790 --> 00:03:42.840
-Bob saw through a fake “authorised test”. He refused, citing
-the rules: labels are not approval, and made no tool calls.
+17
+00:03:32.270 --> 00:03:35.333
+Bob saw through a fake “authorised test”.
 
-20
-00:04:04.774 --> 00:04:12.520
+18
+00:03:35.333 --> 00:03:41.310
+He refused and made no tool calls, citing
+the rule that a label is not approval.
+
+19
+00:04:03.247 --> 00:04:10.993
 Before you trust a Bob run, check these.
 The ones marked observed, we saw Bob do.
 
-21
-00:04:12.520 --> 00:04:16.440
+20
+00:04:10.993 --> 00:04:14.914
 The others come from IBM's documentation.
 
-22
-00:04:21.774 --> 00:04:27.341
+21
+00:04:20.248 --> 00:04:27.368
 Try it yourself: put a codeword rule in a
 rules folder for your mode, and ask for it.
 
-23
-00:04:27.341 --> 00:04:33.760
-If the codeword doesn't come back, Bob never saw
-the rule. Every reply in this video is Bob's own.
+22
+00:04:27.368 --> 00:04:32.226
+If the codeword doesn't come back, Bob never saw the rule.

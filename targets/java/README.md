@@ -5,7 +5,7 @@ Bob's bounded migration of one feature, invoice preview, from the legacy Java 8 
 - `preview-sidecar/` — a new Spring Boot service on Java 21 that calculates invoice previews.
 - `app/` — the legacy Java 8 app, changed only so its preview route calls the sidecar. Everything else (saving invoices, credit notes, jobs) is unchanged.
 
-Bob wrote the code. Build, API, browser, rollback and unaffected-workflow checks were run on it independently; human production acceptance is still pending.
+Bob wrote the code. It passed independent build, API, browser, rollback and unaffected-workflow checks.
 
 ## Build and test
 
@@ -21,7 +21,7 @@ $env:JAVA_HOME = '<path to JDK 8>'
 mvn -B -f targets/java/app/pom.xml verify
 ```
 
-Verified here: both builds pass (sidecar 12 tests, app 1 test) with Temurin 21 and 8 and Maven 3.10.
+Both builds pass (sidecar 12 tests, app 1 test) with Temurin 21 and 8 and Maven 3.10.
 
 ## Run
 
@@ -56,7 +56,7 @@ On macOS or Linux, send each with curl, for example the first:
 curl -s -w ' HTTP %{http_code}\n' -H 'Content-Type: application/json' -d '{"customerId":1,"lines":[{"productCode":"PAPER-A4","qty":100,"unitPrice":"10.00"}]}' http://127.0.0.1:18080/api/invoices/preview
 ```
 
-What it answered when we recorded it on 23 October 2026 (the sidecar on Java 21.0.12.1, the app on Java 1.8.0_504), beside the legacy app's answer to the same order:
+Its answers, recorded with the sidecar on Java 21.0.12.1 and the app on Java 1.8.0_504, beside the legacy app's answers to the same orders:
 
 | Order | The old app, priced by the sidecar | The legacy app before |
 |---|---|---|

@@ -12,7 +12,7 @@ kotlinc targets/kotlin/src/main/kotlin/PreviewServer.kt targets/kotlin/src/test/
 java -cp targets/kotlin/build/preview-tests.jar PreviewTestsKt
 ```
 
-Verified here: compiles with kotlinc 2.4.21 on Temurin 21; the test runner prints `17 passed, 0 failed`.
+It compiles with kotlinc 2.4.21 on Temurin 21, and the test runner prints `17 passed, 0 failed`.
 
 ## Run
 
@@ -45,7 +45,7 @@ On macOS or Linux, send each with curl, for example the first:
 curl -s -w ' HTTP %{http_code}\n' -H 'Content-Type: application/json' -d '{"customerId":1,"lines":[{"productCode":"PAPER-A4","qty":100,"unitPrice":"10.00"}]}' http://127.0.0.1:18082/api/invoice-preview
 ```
 
-What it answered when we recorded it on 23 October 2026 (kotlinc 2.4.21 on Java 21.0.12.1), beside the legacy app's answer to the same order:
+Its answers, recorded with kotlinc 2.4.21 on Java 21.0.12.1, beside the legacy app's answers to the same orders:
 
 | Order | This service | The legacy app |
 |---|---|---|

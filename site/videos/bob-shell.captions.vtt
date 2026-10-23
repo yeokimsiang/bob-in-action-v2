@@ -1,13 +1,13 @@
 WEBVTT
 
 1
-00:00:00.000 --> 00:00:04.711
-An illustrative walkthrough of IBM Bob Shell running the
-kit headless: probed, but no stage was run end to end.
+00:00:00.000 --> 00:00:05.432
+An illustrative walkthrough of IBM Bob Shell
+running the kit headless. Checker results are real;
 
 2
-00:00:04.711 --> 00:00:06.960
-Checker results are real; grey bars cover run values.
+00:00:05.432 --> 00:00:06.960
+grey bars cover run values.
 
 3
 00:00:07.000 --> 00:00:10.868
@@ -54,39 +54,38 @@ a file and line for what it read, or
 a named gap for what it couldn't.
 
 12
-00:02:29.805 --> 00:02:34.021
+00:02:29.794 --> 00:02:34.011
 Assess. Bob turns the evidence into
 findings and an assessment report.
 
 13
-00:02:34.021 --> 00:02:39.080
+00:02:34.011 --> 00:02:39.070
 Because he can't ask you mid-run, you say
 in the prompt that the last checks passed.
 
 14
-00:03:18.593 --> 00:03:26.093
+00:03:18.583 --> 00:03:26.083
 Plan. Bob orders the work into packages
 and staffs them from the roster.
 
 15
-00:04:03.694 --> 00:04:12.611
-Price. Bob writes effort rows and a draft
-statement of work. Your own tools do the money.
+00:04:03.683 --> 00:04:13.100
+Price. Bob writes effort rows and a draft statement
+of work. Your own tools work out the price.
 
 16
-00:05:26.939 --> 00:05:29.980
+00:05:26.929 --> 00:05:29.970
 That's the draft pack, ready for senior review.
 
 17
-00:05:51.581 --> 00:05:55.573
+00:05:51.570 --> 00:05:55.563
 One line of code, traced to one line of the price.
 
 18
-00:05:55.573 --> 00:06:02.041
+00:05:55.563 --> 00:06:02.030
 When the customer asks why the SOW includes
 this fix, you can show them the line.
 
 19
-00:06:02.081 --> 00:06:12.060
+00:06:02.070 --> 00:06:08.154
 To try it: one bob run per stage, a checker after each.
-Try one stage first: no full stage has been run this way.

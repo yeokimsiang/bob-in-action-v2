@@ -37,7 +37,7 @@ record these lines over it at a relaxed pace. Each annotation holds long enough 
 
 - **02:36.2** Assess. Bob turns the evidence into findings, an assessment report and one annex per migration target.
 - **02:45.6** Bob asks because it can't see your terminal. It has no shell here, so it takes your word.  _(on screen: "Bob asks because it can't see your terminal")_
-- **02:55.9** Bob also reads the customer's help-desk tickets. Read-only MCP: synthetic tickets and incidents, none about the search bug.  _(on screen: "Bob also reads the customer's help-desk tickets")_
+- **02:55.9** Bob also reads the customer's help-desk tickets. Read-only MCP: tickets and incidents, none about the search bug.  _(on screen: "Bob also reads the customer's help-desk tickets")_
 - **03:21.3** That evidence became a finding. Each finding cites its evidence. “Exploit not tested”: Bob says so.  _(on screen: "That evidence became a finding")_
 
 ## 03:36.8  Plan
@@ -49,17 +49,17 @@ record these lines over it at a relaxed pace. Each annotation holds long enough 
 
 ## 04:39.4  Price
 
-- **04:39.4** Price. Bob writes effort rows and a draft statement of work. Your own tools do the money.
+- **04:39.4** Price. Bob writes effort rows and a draft statement of work. Your own tools work out the price.
 - **05:18.9** The work package is now an effort row, still citing Desk.java line 93. Hours only, under the rate-card role Migration engineer. Bob writes no money.  _(on screen: "The work package is now an effort row, still citing `Desk.java` line 93")_
 - **05:33.8** When a check fails, read what it names. We planted one wording slip; the output is real. Paste the error to Bob.  _(on screen: "When a check fails, read what it names")_
-- **05:55.2** One line changed. Red is before, green is after: “not a client quotation” became “not a quote”. Nothing else moved.  _(on screen: "One line changed")_
+- **05:55.2** One line changed. Red is before, green is after: the price line now uses the checker's wording. Nothing else moved.  _(on screen: "One line changed")_
 - **06:06.3** Same rules, one line changed: it passes. Its limits stay: whether evidence supports each claim is for your senior reviewer.  _(on screen: "Same rules, one line changed: it passes")_
 
 ## 06:13.9  Ending
 
 - **06:13.9** That's the draft pack.
 - **06:15.6** The draft pack is in runs/acme-1/reports/. Ready for senior review, not for a client.  _(on screen: "The draft pack is in `runs/acme-1/reports/`")_
-- **06:24.5** The SI's engine turns the central hours into the price, not Bob. Synthetic rate; not a quote.  _(on screen: "The SI's engine turns the central hours into the price, not Bob")_
+- **06:24.5** The SI's engine turns the central hours into the price, not Bob. Bob plans the hours; the SI's rate card sets the price.  _(on screen: "The SI's engine turns the central hours into the price, not Bob")_
 
 ## 06:32.1  Thread card
 

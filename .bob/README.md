@@ -1,6 +1,6 @@
 # The SI kit for IBM Bob
 
-This folder configures vanilla IBM Bob to do an SI's assessment work on the legacy app in `../app/`: four slash commands, nine persona modes, rules, skills with their checkers, a hook guard, four synthetic MCP servers and a read-only checks server. It is custom SI configuration, not an IBM premium package. Kit version: see `kit-version.json`.
+This folder configures vanilla IBM Bob to do an SI's assessment work on the legacy app in `../app/`: four slash commands, nine persona modes, rules, skills with their checkers, a hook guard, four mock MCP servers and a read-only checks server. It is custom SI configuration, not an IBM premium package. Kit version: see `kit-version.json`.
 
 The root `README.md` walks through a run. This file explains the pieces.
 
@@ -17,7 +17,7 @@ A command cannot switch modes, so switch first (`/mode si-architect`, and so on)
 
 ## Modes
 
-`custom_modes.yaml` defines nine personas. Writers get an `edit` group whose `fileRegex` accepts only their own stage's files under `runs/<name>/`, as a relative path or an absolute path ending in `runs/<name>/...`, and refuses any path containing `..` or an evaluator folder name.
+`custom_modes.yaml` defines nine personas. Writers get an `edit` group whose `fileRegex` accepts only their own stage's files under `runs/<name>/`, as a relative path or an absolute path ending in `runs/<name>/...`, and refuses any path containing `..` or a reserved folder name.
 
 | Mode | Groups | May write |
 |---|---|---|
@@ -31,11 +31,11 @@ A command cannot switch modes, so switch first (`/mode si-architect`, and so on)
 | `si-qa` | read, edit, skill | `pilot/pilot-verification.json` |
 | `si-tech-lead` | read, skill | nothing |
 
-No mode has a shell (`command` group). Bob writes and checks its own files through the read-only checks tool; you run the checkers as the gate and paste any failures back.
+No mode has a shell (`command` group). Bob writes and checks his own files through the read-only checks tool; you run the checkers as the gate and paste any failures back.
 
 ## Rules
 
-Bob loads `rules/` for every mode and `rules-<slug>/` for the active mode only; the folder name must match the mode's slug exactly, or Bob ignores it without warning. The root `AGENTS.md` is loaded in every mode too.
+Bob loads `rules/` for every mode and `rules-<slug>/` for the active mode only; the folder name must match the mode's slug letter for letter, or Bob ignores it without warning. The root `AGENTS.md` is loaded in every mode too.
 
 - `rules/00-governance.md`: goal, workspace boundaries, hooks, conduct.
 - `rules/10-evidence.md`: evidence, IDs and provenance.
@@ -62,8 +62,8 @@ Bob loads `rules/` for every mode and `rules-<slug>/` for the active mode only; 
 
 `settings.json` wires three scripts in `hooks/`, each started as `python .bob/hooks/<script>.py` from the folder Bob has open (Bob runs hook commands through `cmd /c` on Windows and `sh -c` elsewhere). Bob loads workspace hooks only for a trusted folder.
 
-- `preflight.py` (SessionStart, UserPromptSubmit): checks the kit files exist and no evaluator folder sits at the top of the workspace; at session start it prints `SI kit hooks active`, which the rules tell Bob to look for. A failure blocks the prompt.
-- `pre_tool_guard.py` (PreToolUse, every tool): reads only inside the workspace (evaluator folders, internal working folders and secret-looking files refused); writes, edits, patches and mkdir only inside `runs/<name>/`, refusing `..`, symlink or junction escapes and everything else (`app/`, `tools/`, `targets/`, `.bob/`); shell commands and delete, move or rename always refused; MCP only for the ten read-only tools of the four mock servers and the checks tool. Exit 2 blocks the call. It needs no environment variables.
+- `preflight.py` (SessionStart, UserPromptSubmit): checks the kit files exist and no reserved folder sits at the top of the workspace; at session start it prints `SI kit hooks active`, which the rules tell Bob to look for. A failure blocks the prompt.
+- `pre_tool_guard.py` (PreToolUse, every tool): reads only inside the workspace (reserved folders, internal working folders and secret-looking files refused); writes, edits, patches and mkdir only inside `runs/<name>/`, refusing `..`, symlink or junction escapes and everything else (`app/`, `tools/`, `targets/`, `.bob/`); shell commands and delete, move or rename always refused; MCP only for the ten read-only tools of the four mock servers and the checks tool. Exit 2 blocks the call. It needs no environment variables.
 - `log_event.py` (PostToolUse, Stop): appends a content-free line (time, event, tool, run, path) to `runs/hook-events.jsonl` once `runs/` exists. It never blocks.
 
 The guard is a backstop for mistakes, not a security sandbox: it sees only the paths a tool call declares.
@@ -78,4 +78,4 @@ It also registers `checks`, started as `python ${workspaceFolder}/tools/checkers
 
 ## Checking the kit without Bob
 
-The kit's own tests do not ship in this folder. Everything here can be exercised at zero Bob credits: start the MCP servers by hand (see `../tools/mcp/README.md`), feed the guard a JSON payload on stdin (in PowerShell or a POSIX shell, `echo '{"tool_name":"execute_command","tool_input":{}}' | python .bob/hooks/pre_tool_guard.py` prints the refusal and exits 2), and run each checker on a finished run.
+Everything here can be exercised at zero Bob credits: start the MCP servers by hand (see `../tools/mcp/README.md`), feed the guard a JSON payload on stdin (in PowerShell or a POSIX shell, `echo '{"tool_name":"execute_command","tool_input":{}}' | python .bob/hooks/pre_tool_guard.py` prints the refusal and exits 2), and run each checker on a finished run.

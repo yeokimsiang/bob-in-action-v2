@@ -6,8 +6,8 @@
   "use strict";
   var R = window.DESK_RECORDING;
   var state = R.start;
-  var NOTE = "Not recorded: this copy replays answers the real app gave, so it can only show those. " +
-    "Use Try this order or type an order in as the steps beside the desk say, or start the real app yourself (Start it).";
+  var NOTE = "This copy has the real app's answers for the recorded orders. " +
+    "Use Try this order, type an order in as the steps beside the desk say, or start the real app yourself (Start it).";
 
   function canonical(value) {
     if (Array.isArray(value)) return "[" + value.map(canonical).join(",") + "]";

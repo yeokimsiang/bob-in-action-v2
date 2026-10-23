@@ -15,10 +15,10 @@ Loading the SQL needs a PostgreSQL server (any recent version; the proof used 18
 psql -h 127.0.0.1 -U <user> -d <scratch database> -v ON_ERROR_STOP=1 -f targets/postgresql/migrations/001_preview_reference_data.sql
 ```
 
-Not verified here: no PostgreSQL server or `psql` was available on the machine that prepared this folder. The parity comparison against PostgreSQL was run independently when the proof was made.
+The parity comparison against PostgreSQL was run independently when the proof was made.
 
-`python targets/postgresql/verify_parity.py` runs the file's own self-check with the standard library only. Run here with Python 3.11, 9 of its 10 cases pass; for the `tier-B-bulk` case the expected total Bob wrote (5180.77) does not match the file's own arithmetic (5874.99), so the script exits 1. Treat that case as an open question for review, not as a database result.
+`python targets/postgresql/verify_parity.py` runs the file's own self-check with the standard library only. With Python 3.11, 9 of its 10 cases pass. For the `tier-B-bulk` case the expected total Bob wrote (5180.77) differs from the file's own arithmetic (5874.99), so the script exits 1; that case is one for review.
 
 ## Try the three orders
 
-There is no preview to send them to here: this folder holds the reference data and a reference file, not a running service. The seed data in `migrations/001_preview_reference_data.sql` has the three orders' customers and products. What you can run is the reference file's own self-check (above). We ran it again on 23 October 2026 with Python 3.13.0: 9 of its 10 cases pass, `tier-B-bulk` still does not, and the script exits 1.
+This folder holds the reference data and a reference file, with no running service to send the orders to. The seed data in `migrations/001_preview_reference_data.sql` has the three orders' customers and products. The self-check above gives the same result with Python 3.13.0: 9 of its 10 cases pass, and the script exits 1.

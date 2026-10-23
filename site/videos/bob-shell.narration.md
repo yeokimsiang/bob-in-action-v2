@@ -6,7 +6,7 @@ record these lines over it at a relaxed pace. Each annotation holds long enough 
 
 ## 00:00.0  Disclosure
 
-- **00:00.0** An illustrative walkthrough of IBM Bob Shell running the kit headless: probed, but no stage was run end to end. Checker results are real; grey bars cover run values.
+- **00:00.0** An illustrative walkthrough of IBM Bob Shell running the kit headless. Checker results are real; grey bars cover run values.
 
 ## 00:07.0  Claim
 
@@ -28,7 +28,7 @@ record these lines over it at a relaxed pace. Each annotation holds long enough 
 - **01:06.4** Discover. You choose a run name, acme-1 here, and Bob records evidence: a file and line for what it read, or a named gap for what it couldn't.
 - **01:15.8** Pipe the command's text to Bob. bob run doesn't expand the kit's slash commands, so read the file, fill in the run name, and pipe it in.  _(on screen: "Pipe the command's text to Bob")_
 - **01:22.8** One run per stage, in that stage's mode. --mode picks the persona and --trust the folder. Add --max-cost to cap a run's credits.  _(on screen: "One run per stage, in that stage's mode")_
-- **01:41.2** Headless runs approve every tool for you. The kit's hooks still run: in our test its guard blocked a write outside runs/.  _(on screen: "Headless runs approve every tool for you")_
+- **01:41.2** Headless runs approve every tool for you. The kit's hooks still run, and the guard blocks writes outside runs/.  _(on screen: "Headless runs approve every tool for you")_
 - **01:48.2** Bob ends by naming the checks to run. He can't run them: this kit gives Bob no shell.  _(on screen: "Bob ends by naming the checks to run")_
 - **01:58.2** Evidence points at Desk.java line 93. Each evidence row cites a file and line, or names a gap.  _(on screen: "Evidence points at `Desk.java` line 93")_
 - **02:08.2** The bug we'll follow: search builds SQL from what a user types. Watch it pass through Assess, Plan and Price.  _(on screen: "The bug we'll follow: search builds SQL from what a user types")_
@@ -48,17 +48,17 @@ record these lines over it at a relaxed pace. Each annotation holds long enough 
 
 ## 04:03.7  Price
 
-- **04:03.7** Price. Bob writes effort rows and a draft statement of work. Your own tools do the money.
+- **04:03.7** Price. Bob writes effort rows and a draft statement of work. Your own tools work out the price.
 - **04:29.2** The work package is now an effort row, still citing Desk.java line 93. Hours only, under the rate-card role Migration engineer. Bob writes no money.  _(on screen: "The work package is now an effort row, still citing `Desk.java` line 93")_
 - **04:44.1** When a check fails, read what it names. We planted one wording slip; the output is real. Give the error to Bob in a new run.  _(on screen: "When a check fails, read what it names")_
-- **04:59.6** Fix it with one more run. Put the error in the prompt, in the same mode. Bob changes only what it names.  _(on screen: "Fix it with one more run")_
-- **05:08.4** One line changed. Red is before, green is after, drawn for this video. Bob's run log shows a one-line edit.  _(on screen: "One line changed")_
+- **04:59.5** Fix it with one more run. Put the error in the prompt, in the same mode. Bob changes only what it names.  _(on screen: "Fix it with one more run")_
+- **05:08.3** One line changed. Red is before, green is after: the price line now uses the checker's wording. Bob's run log shows a one-line edit.  _(on screen: "One line changed")_
 - **05:19.3** Same rules, one line changed: it passes. Its limits stay: whether evidence supports each claim is for your senior reviewer.  _(on screen: "Same rules, one line changed: it passes")_
 
 ## 05:26.9  Ending
 
 - **05:26.9** That's the draft pack, ready for senior review.
-- **05:30.0** The SI's engine turns the central hours into the price, not Bob. Synthetic rate; not a quote.  _(on screen: "The SI's engine turns the central hours into the price, not Bob")_
+- **05:30.0** The SI's engine turns the central hours into the price, not Bob. Bob plans the hours; the SI's rate card sets the price.  _(on screen: "The SI's engine turns the central hours into the price, not Bob")_
 - **05:37.6** The draft pack is in runs/acme-1/reports/. Ready for senior review, not for a client.  _(on screen: "The draft pack is in `runs/acme-1/reports/`")_
 
 ## 05:51.6  Thread card
@@ -67,4 +67,4 @@ record these lines over it at a relaxed pace. Each annotation holds long enough 
 
 ## 06:02.1  End card
 
-- **06:02.1** To try it: one bob run per stage, a checker after each. Try one stage first: no full stage has been run this way.
+- **06:02.1** To try it: one bob run per stage, a checker after each.

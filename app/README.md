@@ -1,6 +1,6 @@
 # Ingram Trials invoice desk (the legacy app)
 
-This is the starting point: a small, deliberately imperfect Java 8 application that Bob assesses. It is a synthetic distributor invoice desk with customer search, invoice preview and save, credit notes and scheduled jobs. It has the kinds of problems real inherited code has: coupling, duplicated rules, stale documentation, weak tests, unsafe source patterns and code that may or may not still be used.
+This is the starting point: a small, deliberately imperfect Java 8 application that Bob assesses. It is a made-up distributor's invoice desk with customer search, invoice preview and save, credit notes and scheduled jobs. It has the kinds of problems real inherited code has: coupling, duplicated rules, stale documentation, weak tests, unsafe source patterns and code nobody is sure is still used.
 
 Treat it as read-only. The Bob commands read it and write their reports under `runs/<name>/`; they never change this folder.
 
@@ -36,7 +36,7 @@ You do not need to build the app to run the Bob commands. To see it working you 
 
 The scripts look for Java 8 in `JAVA8_HOME` (default `C:\Program Files\Eclipse Adoptium\jdk-8.0.504.1-hotspot`) and Maven in `MAVEN_CMD`, then `mvn` on `PATH`. On macOS or Linux, run Maven directly with a Java 8 JDK: `mvn -f app/pom.xml clean verify`.
 
-The server binds to `127.0.0.1` only. Data lives in `app/runtime/` (ignored by git). The data is synthetic; there are no real customers or credentials.
+The server binds to `127.0.0.1` only. Data lives in `app/runtime/` (ignored by git). Its only login is H2's default `sa` user with an empty password.
 
 ## What you'll see
 
@@ -69,4 +69,4 @@ foreach ($order in $orders) {
 }
 ```
 
-If you would rather not install Java 8, the demo page has a [recorded copy of the desk](https://yeokimsiang.github.io/bob-in-action-v2/legacy-desk/#use) that answers these orders as the real app did when we recorded it on 22 October 2026.
+If you would rather not install Java 8, the demo page has a [recorded copy of the desk](https://yeokimsiang.github.io/bob-in-action-v2/legacy-desk/#use) that answers these orders as the real app does.

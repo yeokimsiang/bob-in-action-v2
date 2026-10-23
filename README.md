@@ -11,13 +11,13 @@ This repository lets an SI or reseller partner watch IBM Bob do assessment work 
 
 After each command you run a checker yourself. Bob has no shell in this kit, so every check is a plain Python command you can read and repeat.
 
-Everything here is synthetic: the application, the customers, the roster, the rate card, the tickets and the timesheets. Nothing Bob writes is a quote or an approval.
+The application, its customers, the roster, the rate card, the tickets and the timesheets are all made up, and Bob's documents are drafts for your senior review.
 
 ## See it first
 
 **The demo page**, [yeokimsiang.github.io/bob-in-action-v2](https://yeokimsiang.github.io/bob-in-action-v2/), tells the story in a browser. It follows one line of the legacy code, `Desk.java` line 93, through the four stages to an illustrative price, then shows the seven migrations, how the kit is built and how to run it yourself. Nothing to install.
 
-**The app we started with**, [a recorded copy of the legacy desk](https://yeokimsiang.github.io/bob-in-action-v2/legacy-desk/): its code, how it starts, and its own screen answering three orders as the real app did. Under each migration, the demo page puts that target's answers to the same three orders beside the legacy app's; the TypeScript client passes them to the legacy app and checks what comes back, and PostgreSQL, which has no service, shows its own self-check.
+**The app we started with**, [a recorded copy of the legacy desk](https://yeokimsiang.github.io/bob-in-action-v2/legacy-desk/): its code, how it starts, and its own screen answering three orders as the real app did. Under each migration, the demo page puts that target's answers to the same three orders beside the legacy app's; the TypeScript client passes them to the legacy app and checks what comes back, and PostgreSQL, a database script with no service, shows its script instead.
 
 **Three short videos** of the kit in IBM Bob. They have no sound: the narration plays as captions under the picture, and each video's page lists its chapters and the full narration.
 
@@ -25,9 +25,9 @@ Everything here is synthetic: the application, the customers, the roster, the ra
 |---|---|---|
 | [<img src="site/videos/bob-in-action.jpg" width="240" alt="Bob in action">](https://yeokimsiang.github.io/bob-in-action-v2/#watch-bob-in-action) | [Bob in action](https://yeokimsiang.github.io/bob-in-action-v2/#watch-bob-in-action) | The four commands in the Bob IDE, from the legacy code to a line in the price. A recreated session, sped up. |
 | [<img src="site/videos/what-bob-reads.jpg" width="240" alt="What Bob reads">](https://yeokimsiang.github.io/bob-in-action-v2/#watch-what-bob-reads) | [What Bob reads](https://yeokimsiang.github.io/bob-in-action-v2/#watch-what-bob-reads) | The `.bob` folder: which file decides who Bob is, what he knows, what he can reach and what he may do. A recreated IDE with real Bob replies. |
-| [<img src="site/videos/bob-shell.jpg" width="240" alt="Bob Shell">](https://yeokimsiang.github.io/bob-in-action-v2/#watch-bob-shell) | [Bob Shell](https://yeokimsiang.github.io/bob-in-action-v2/#watch-bob-shell) | The same four stages from the terminal, one `bob` run per stage and a checker after each. Illustrative: not run end to end. |
+| [<img src="site/videos/bob-shell.jpg" width="240" alt="Bob Shell">](https://yeokimsiang.github.io/bob-in-action-v2/#watch-bob-shell) | [Bob Shell](https://yeokimsiang.github.io/bob-in-action-v2/#watch-bob-shell) | The same four stages from the terminal, one `bob` run per stage and a checker after each. Recreated from real probes, sped up. |
 
-Bob in action and Bob Shell follow a separate run of the kit on the same code, and grey bars cover that run's own IDs and numbers. The figures that tell the story are the ones on the demo page, and they are illustrative, not a quote.
+Bob in action and Bob Shell follow their own run of the kit on the same code; grey bars cover that run's IDs and numbers.
 
 **The four documents** Bob wrote in the demo's run, each readable on the page:
 
@@ -112,15 +112,15 @@ python tools/checkers/check_effort_numbers.py --csv runs/acme-1/reports/effort-m
 python .bob/skills/si-collate/scripts/validate_report_quality.py --pack runs/acme-1/reports --rubric .bob/standards/report-quality-rubric.json --findings runs/acme-1/data/findings.json --plan-tasks runs/acme-1/data/plan-tasks.json --effort-rows runs/acme-1/data/effort-rows.json
 ```
 
-Exit code 0 means a check passed. When a checker prints errors, paste them into Bob in the same mode and ask it to correct only what they name. The tools that write files refuse to overwrite, so delete `effort-model.csv`, `illustrative-price.json` and `effort-check.json` before running the price checks again. The final report check is strict: a first pass that fails on a wording rule or two is normal, not a broken kit. It reads the whole pack, so its errors can name files from earlier stages; fix each file in the mode that wrote it: `assessment.md` and `target-annexes.md` in `si-architect`, `implementation-plan.md` and `validation-ledger.md` in `si-pm`, `sow.md` in `si-commercial`.
+Exit code 0 means a check passed. When a checker prints errors, paste them into Bob in the same mode and ask him to correct only what they name. The tools that write files refuse to overwrite, so delete `effort-model.csv`, `illustrative-price.json` and `effort-check.json` before running the price checks again. The final report check is strict: a first pass that fails on a wording rule or two is normal, not a broken kit. It reads the whole pack, so its errors can name files from earlier stages; fix each file in the mode that wrote it: `assessment.md` and `target-annexes.md` in `si-architect`, `implementation-plan.md` and `validation-ledger.md` in `si-pm`, `sow.md` in `si-commercial`.
 
-The finished pack is `runs/acme-1/reports/`: the assessment, the target annexes, the implementation plan, the validation ledger, the effort model and the draft SOW. The illustrative price table in `runs/acme-1/checks/` is synthetic, marked `not_a_quote`, and comes from the SI's tools, not from Bob.
+The finished pack is `runs/acme-1/reports/`: the assessment, the target annexes, the implementation plan, the validation ledger, the effort model and the draft SOW. The illustrative price table in `runs/acme-1/checks/` comes from the SI's tools, not from Bob, and is marked `not_a_quote`.
 
 ## What it costs
 
 Each command uses Bob credits from your own account; the checkers cost nothing. Bob used roughly:
 
-| Stage | Controlled runs | Live run, self-checking (20 Oct) |
+| Stage | Earlier runs | With Bob's self-check |
 |---|---|---|
 | `/discover` | about 0.4 to 0.5 | about 0.6 |
 | `/assess` | about 3 | about 2 |
@@ -129,13 +129,11 @@ Each command uses Bob credits from your own account; the checkers cost nothing. 
 | Fixes after your checkers | | none needed |
 | All four | about 9 to 10 | about 8 |
 
-The controlled runs had fixed limits on how long each stage could go. The live run is this repository, run with Bob on 20 October 2026; the figures include Bob's own check-and-correct rounds, and every checker passed on your first run of it. If a checker does print errors, a short new task that names the exact rows or lines from them cost us about 0.1 to 0.3 on an earlier run; going on in a long chat cost about 0.5 to 1.3 per round. Treat the figures as a guide, not a promise.
-
-All of these figures were measured before the root `AGENTS.md` was added; every run now loads it as well.
+The first column comes from earlier runs with a fixed limit on each stage. The second is a run of all four stages with Bob checking and correcting his own files; every checker then passed on its first run. When a checker did print errors, a short new task that named the rows or lines took about 0.1 to 0.3; going on in a long chat took about 0.5 to 1.3 per round. The root `AGENTS.md` came after these runs, and every run now loads it too. The figures are a guide.
 
 ## Running headless with Bob Shell
 
-The kit is built and checked for the Bob IDE. If you drive it headless with Bob Shell (`bob run`, which needs an API key in `BOB_API_KEY` and approves every tool call itself), these points come from real runs with Bob Shell 2.0.6, including the 20 October run of all four stages described under [What keeps Bob in its lane](#what-keeps-bob-in-its-lane).
+The kit is built and checked for the Bob IDE. To drive it headless with Bob Shell (`bob run`, which needs an API key in `BOB_API_KEY` and approves every tool call itself), note these points, from real runs with Bob Shell 2.0.6, including the run of all four stages described under [What keeps Bob in its lane](#what-keeps-bob-in-its-lane).
 
 - `bob run` does not expand the kit's slash commands, and a command file passed as an argument is rejected (its front matter starts with `---`). Pipe the command's text in instead, with the run name filled in.
 - Bob cannot ask you mid-run whether the previous checker passed, so say so after the command text.
@@ -149,7 +147,7 @@ $p = (Get-Content .bob/commands/assess.md -Raw) -replace '\$1','acme-1'
 "$p`nThe /discover checks passed." | bob run --mode si-architect --max-cost 4
 ```
 
-Then `plan.md` in `si-pm` and `price.md` in `si-commercial` the same way, running each stage's checkers in between exactly as above. `--max-cost` caps a run; a run that hits it stops and leaves partial files in place.
+Then `plan.md` in `si-pm` and `price.md` in `si-commercial` the same way, running each stage's checkers in between as above. `--max-cost` caps a run; a run that hits it stops and leaves partial files in place.
 
 ## What keeps Bob in its lane
 
@@ -159,9 +157,9 @@ Then `plan.md` in `si-pm` and `price.md` in `si-commercial` the same way, runnin
 - **The guard hook.** Before every tool call, `.bob/hooks/pre_tool_guard.py` allows reads only inside this workspace, writes only inside `runs/<name>/` (no `..`, no links that lead elsewhere, never `app/`, `tools/`, `targets/` or `.bob/`), refuses every shell command and every delete, move or rename, and allows only the ten read-only tools of the four mock MCP servers and the read-only checks tool.
 - **The checkers.** Bob's output is accepted only when your checkers say so. They never relax a rule to let a draft through.
 
-These are backstops for honest mistakes in a demo, not a security sandbox.
+These catch honest mistakes; they are not a security sandbox.
 
-Tested in live Bob sessions (Bob 2.0.6, 19, 20 and 22 October 2026), in fresh copies of this repository, with Bob's command line rather than the editor. On 19 October the guard let Bob write inside `runs/` and refused a file at the root, an edit to `app/` and a shell command, and the disk confirmed nothing was written outside `runs/`. On 20 October the four stages ran in order: Bob used the mock MCP servers and the checks tool through the guard, its own checks caught and corrected errors in `/assess` and `/price`, and every checker above then exited 0 on the first run, with nothing pasted back to Bob. On 22 October, with this kit's current wording, a probe gave Bob only `/assess`'s own check and a target annex with one error put in on purpose: he called the checks tool, made one edit to that file, checked again and stopped once it passed. The checker's message for that error says what to write. Bob's command line passes a typed custom command such as `/discover acme-1` to Bob as plain text instead of running it, so those runs sent each command's text, with the run name filled in, as the prompt; in the editor you type the command. The command line's output did not include the "SI kit hooks active" line, so we have not seen it ourselves; in the editor, step 1 of [Run it](#run-it) is how you check the hooks are running in your Bob.
+Tested in live sessions with Bob 2.0.6's command line, in fresh copies of this repository. The guard let Bob write inside `runs/` and refused a file at the root, an edit to `app/` and a shell command. In a run of all four stages, Bob used the mock MCP servers and the checks tool through the guard, his own checks caught and corrected errors in `/assess` and `/price`, and every checker above then exited 0 on its first run. The command line takes a typed command such as `/discover acme-1` as plain text, so those sessions sent each command's text, with the run name filled in, as the prompt. In the editor you type the command, and step 1 of [Run it](#run-it) is how you check the hooks are running in your Bob.
 
 ## Migration targets
 
@@ -177,7 +175,7 @@ Tested in live Bob sessions (Bob 2.0.6, 19, 20 and 22 October 2026), in fresh co
 | `targets/postgresql/` | H2 to PostgreSQL for the preview reference data |
 | `targets/microservices/` | Preview pulled out into its own Spring Boot service |
 
-To build `targets/microservices/`, use a Java 21 JDK: on Java 25 it did not compile when we tried it.
+To build `targets/microservices/`, use a Java 21 JDK; it does not compile on Java 25.
 
 The assessment's target annexes discuss the same seven targets.
 

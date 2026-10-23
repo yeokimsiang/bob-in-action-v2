@@ -10,7 +10,7 @@ Needs Maven and a Java 21 JDK. From the repository root:
 mvn -B -f targets/microservices/pom.xml verify
 ```
 
-Verified here: 43 tests, `BUILD SUCCESS`, with Temurin 21 and Maven 3.10.
+The build passes: 43 tests, `BUILD SUCCESS`, with Temurin 21 and Maven 3.10.
 
 ## Run
 
@@ -43,7 +43,7 @@ On macOS or Linux, send each with curl, for example the first:
 curl -s -w ' HTTP %{http_code}\n' -H 'Content-Type: application/json' -d '{"customerId":1,"lines":[{"productCode":"PAPER-A4","qty":100,"unitPrice":"10.00"}]}' http://127.0.0.1:18085/api/invoice-preview
 ```
 
-What it answered when we recorded it on 23 October 2026 (Java 21.0.12.1, Maven 3.10.0), beside the legacy app's answer to the same order:
+Its answers, recorded with Java 21.0.12.1 and Maven 3.10.0, beside the legacy app's answers to the same orders:
 
 | Order | This service | The legacy app |
 |---|---|---|

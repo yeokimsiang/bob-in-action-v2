@@ -12,7 +12,7 @@ npm install
 npm test        # tsc -p tsconfig.json, then node dist/preview.test.js
 ```
 
-Verified here: `42 passed, 0 failed` on Node 26 with TypeScript 7.0.2.
+The tests pass: `42 passed, 0 failed` on Node 26 with TypeScript 7.0.2.
 
 ## Try the three orders
 
@@ -22,7 +22,7 @@ The client calculates nothing: it sends an order to the legacy app's own preview
 node --input-type=module -e "import { fetchPreview } from './dist/preview.js'; const order = { customerId: 1, lines: [{ productCode: 'PAPER-A4', qty: 100, unitPrice: '10.00' }] }; console.log(await fetchPreview(order, (route, init) => fetch('http://127.0.0.1:18080' + route, init)));"
 ```
 
-Change the order for the other two. What it sent and the answer it checked when we recorded it on 23 October 2026 (Node v26.10.0, TypeScript 7.0.2):
+Change the order for the other two. What it sends and the answer it checks, recorded with Node v26.10.0 and TypeScript 7.0.2:
 
 | Order | It sent | The answer it checked |
 |---|---|---|
