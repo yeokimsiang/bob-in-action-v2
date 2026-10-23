@@ -1,0 +1,78 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:05.960
+Illustrative: Bob's replies are representative, checker
+output is real, and grey bars cover run values.
+
+2
+00:00:06.000 --> 00:00:09.801
+A customer asks what it will take to modernise
+their legacy app, and what it will cost.
+
+3
+00:00:09.801 --> 00:00:12.902
+Four Bob commands turn their code
+into the documents an SI prices from.
+
+4
+00:00:12.902 --> 00:00:15.960
+We'll follow one bug from the code
+all the way to a line in the price.
+
+5
+00:00:16.000 --> 00:00:22.072
+Each command runs in its own Bob mode, and
+each mode plays one role on an SI team.
+
+6
+00:00:22.072 --> 00:00:24.960
+After every command, you run a checker.
+
+7
+00:00:25.000 --> 00:00:33.167
+First, set up once: open the kit in IBM
+Bob, trust the folder, and check Python.
+
+8
+00:01:00.800 --> 00:01:07.130
+Discover. You choose a run name,
+acme-1 here, and Bob records evidence:
+
+9
+00:01:07.130 --> 00:01:13.370
+a file and line for what it read, or
+a named gap for what it couldn't.
+
+10
+00:02:36.241 --> 00:02:45.600
+Assess. Bob turns the evidence into findings, an
+assessment report and one annex per migration target.
+
+11
+00:03:36.830 --> 00:03:44.330
+Plan. Bob orders the work into packages
+and staffs them from the roster.
+
+12
+00:04:39.395 --> 00:04:48.312
+Price. Bob writes effort rows and a draft
+statement of work. Your own tools do the money.
+
+13
+00:06:13.886 --> 00:06:15.550
+That's the draft pack.
+
+14
+00:06:32.087 --> 00:06:36.080
+One line of code, traced to one line of the price.
+
+15
+00:06:36.080 --> 00:06:42.547
+When the customer asks why the SOW includes
+this fix, you can show them the line.
+
+16
+00:06:42.587 --> 00:06:51.560
+To try it yourself: open the kit, trust the folder, pick
+SI Architect, and type slash discover with your run name.

@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "run_id": "{{run_id}}",
+  "source_revision": "{{source_revision}}",
+  "rows": [
+    {
+      "deliverable_id": "DEL-001",
+      "wbs_id": "WBS-1.1",
+      "task_name": "Synthetic assessment example; replace from reviewed scope",
+      "role": "SI architect",
+      "quantity": "1",
+      "unit": "bounded component",
+      "low_hours": "2",
+      "central_hours": "4",
+      "high_hours": "8",
+      "method": "Synthetic illustrative assumption; not measured pilot effort",
+      "evidence_or_comparable": "ASSUMPTION-001; replace with exact evidence or documented assumption",
+      "uncertainty_driver": "Client owner and operational evidence pending",
+      "included": "included",
+      "status": "assessment-forecast",
+      "notes": "Unpriced synthetic template; not an accepted estimate or approval"
+    }
+  ]
+}

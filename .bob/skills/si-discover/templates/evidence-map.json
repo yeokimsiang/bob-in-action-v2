@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "run_id": "synthetic-template-replace-before-use",
+  "source_revision": "synthetic-template-replace-before-use",
+  "evidence": [
+    {
+      "id": "EV-001",
+      "class": "source_config",
+      "pointer": "example/source.java:1 (synthetic example, replace)",
+      "observation": "Synthetic example of a configured entry point; replace with inspected observation.",
+      "gap": "Runtime usage and owner interview not supplied."
+    },
+    {
+      "id": "EV-002",
+      "class": "unknown",
+      "pointer": "run inputs: missing operational evidence",
+      "observation": "No production volume evidence was supplied in this example.",
+      "gap": "Client operations owner must provide measured data volumes and backup/DR evidence."
+    },
+    {
+      "id": "EV-003",
+      "class": "source_config",
+      "pointer": "example/source.java:1 (synthetic example, replace)",
+      "observation": "Documentation note (SyntheticComponent): synthetic example of a per-component documentation note; replace with what the inspected comments and names do and do not explain.",
+      "gap": ""
+    }
+  ],
+  "relationships": [
+    {
+      "id": "REL-001",
+      "from_component": "Synthetic browser route; replace",
+      "to_component": "Synthetic backend entry point; replace",
+      "kind": "http",
+      "evidence_ids": ["EV-001"],
+      "runtime_status": "source_inferred",
+      "gap": "Execute and archive a browser/API trace before claiming runtime observation."
+    },
+    {
+      "id": "REL-002",
+      "from_component": "SyntheticCaller.replaceMe",
+      "to_component": "SyntheticCallee.replaceMe",
+      "kind": "call",
+      "evidence_ids": ["EV-001"],
+      "runtime_status": "source_inferred",
+      "gap": "Synthetic method-level edge; cite the exact call-site path:line that names the callee."
+    }
+  ]
+}

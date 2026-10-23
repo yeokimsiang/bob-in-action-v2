@@ -1,0 +1,48 @@
+{
+  "mcpServers": {
+    "roster": {
+      "command": "python",
+      "args": [
+        "${workspaceFolder}/tools/mcp/launch.py",
+        "roster"
+      ],
+      "alwaysAllow": [],
+      "disabled": false
+    },
+    "ratecard": {
+      "command": "python",
+      "args": [
+        "${workspaceFolder}/tools/mcp/launch.py",
+        "ratecard"
+      ],
+      "alwaysAllow": [],
+      "disabled": false
+    },
+    "tickets": {
+      "command": "python",
+      "args": [
+        "${workspaceFolder}/tools/mcp/launch.py",
+        "tickets"
+      ],
+      "alwaysAllow": [],
+      "disabled": false
+    },
+    "timesheets": {
+      "command": "python",
+      "args": [
+        "${workspaceFolder}/tools/mcp/launch.py",
+        "timesheets"
+      ],
+      "alwaysAllow": [],
+      "disabled": false
+    },
+    "checks": {
+      "command": "python",
+      "args": [
+        "${workspaceFolder}/tools/checkers/checks_server.py"
+      ],
+      "alwaysAllow": [],
+      "disabled": false
+    }
+  }
+}

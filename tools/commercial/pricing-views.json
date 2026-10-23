@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "kind": "si-pricing-views-config",
+  "synthetic": true,
+  "label": "Synthetic pricing-view assumptions for the demonstration rate card: illustrative, not a quote.",
+  "likelihood_weights": {
+    "Low": "0.2",
+    "Medium": "0.5",
+    "High": "0.8"
+  },
+  "range_narrowing_fraction": "0.5",
+  "rules": {
+    "flat_contingency": "The engine's existing allowance: each band subtotal x risk_allowance_percent (15, synthetic), rounded to cents HALF_UP and added once.",
+    "risk_based_contingency": "Per Bob-named risk driver: weighted hours = likelihood weight x hours impact (weights above, synthetic). The weighted hours are priced at the highest rate-card rate among the driver's affected rows that the engine priced (included rows with a rate-card role); excluded or unpriced affected rows are listed but not priced, and a driver with no priced affected row fails closed. Contingency = weighted hours x that rate, rounded to cents HALF_UP; the total is the sum of the per-driver amounts. Its percentage is the total over the central subtotal, rounded to two places.",
+    "calibration": "Factor = total actual pilot hours / total planned pilot hours from the synthetic timesheets, rounded to four places. For each priced row: calibrated central = central hours x factor (rounded to 0.01 h), clamped to that row's original low-high range; narrowed low = calibrated central - (calibrated central - original low) x narrowing fraction; narrowed high = calibrated central + (original high - calibrated central) x narrowing fraction (both rounded to 0.01 h). Each row's hours are priced at its rate and rounded to cents; totals are sums. Every row, so every total, stays within the original low-high range.",
+    "fixed_price": "Calibrated central subtotal (the uncalibrated central subtotal when no pilot timesheets are available) plus the risk-based contingency (the flat percentage of that subtotal when Bob named no risk drivers). The bases used are recorded.",
+    "capped_time_and_materials": "Billed at rate-card rates x hours worked, up to a cap. Estimate = the calibrated central subtotal; cap = the calibrated narrowed-high subtotal (uncalibrated: the central and high subtotals). No contingency is added: the cap is the top of the effort range.",
+    "pilot_then_programme": "Pilot phase priced separately at the synthetic timesheet actuals (each role's actual hours x its rate-card rate, rounded to cents), then the remaining programme at the fixed price above. Needs the pilot timesheets."
+  }
+}

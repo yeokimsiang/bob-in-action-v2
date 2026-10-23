@@ -1,0 +1,286 @@
+{
+  "schema": "si-mock-roster/v1",
+  "synthetic": true,
+  "notice": "Synthetic delivery roster for demonstration only. Not real people, skills assessments or HR records. ratecard_role names exist on the synthetic SGD rate card in TOOLS/commercial/server.py SEEDS; where no dedicated rate exists the nearest role is stated in ratecard_role_basis.",
+  "records": [
+    {
+      "id": "SE-01",
+      "name": "Synthetic Engineer 01",
+      "role": "Solution architect",
+      "seniority": "principal",
+      "skills": [
+        "Solution architecture",
+        "Java 8",
+        "Java 21",
+        "Spring Boot 3",
+        "PostgreSQL",
+        "Application security"
+      ],
+      "ratecard_role": "Solution architect",
+      "ratecard_role_basis": "exact rate-card role",
+      "availability": [
+        {
+          "from": "2026-10-26",
+          "to": "2026-12-18",
+          "allocation_percent": 50
+        },
+        {
+          "from": "2027-01-04",
+          "to": "2027-03-31",
+          "allocation_percent": 100
+        }
+      ],
+      "synthetic": true
+    },
+    {
+      "id": "SE-02",
+      "name": "Synthetic Engineer 02",
+      "role": "Solution architect",
+      "seniority": "senior",
+      "skills": [
+        "Solution architecture",
+        "Java 21",
+        "Spring Boot 3",
+        "CI/CD",
+        "Docker"
+      ],
+      "ratecard_role": "Solution architect",
+      "ratecard_role_basis": "exact rate-card role",
+      "availability": [
+        {
+          "from": "2026-11-02",
+          "to": "2027-02-26",
+          "allocation_percent": 100
+        }
+      ],
+      "synthetic": true
+    },
+    {
+      "id": "SE-03",
+      "name": "Synthetic Engineer 03",
+      "role": "Migration engineer",
+      "seniority": "senior",
+      "skills": [
+        "Java 8",
+        "Java 21",
+        "Spring Boot 2",
+        "Spring Boot 3",
+        "Maven",
+        "JUnit 5"
+      ],
+      "ratecard_role": "Migration engineer",
+      "ratecard_role_basis": "exact rate-card role",
+      "availability": [
+        {
+          "from": "2026-10-19",
+          "to": "2027-01-29",
+          "allocation_percent": 100
+        }
+      ],
+      "synthetic": true
+    },
+    {
+      "id": "SE-04",
+      "name": "Synthetic Engineer 04",
+      "role": "Migration engineer",
+      "seniority": "senior",
+      "skills": [
+        "Java 21",
+        "Spring Boot 3",
+        "PostgreSQL",
+        "Flyway",
+        "JUnit 5"
+      ],
+      "ratecard_role": "Migration engineer",
+      "ratecard_role_basis": "exact rate-card role",
+      "availability": [
+        {
+          "from": "2026-11-16",
+          "to": "2027-03-31",
+          "allocation_percent": 80
+        }
+      ],
+      "synthetic": true
+    },
+    {
+      "id": "SE-05",
+      "name": "Synthetic Engineer 05",
+      "role": "Migration engineer",
+      "seniority": "mid",
+      "skills": [
+        "Java 8",
+        "Java 21",
+        "Spring Boot 3",
+        "Maven",
+        "Docker"
+      ],
+      "ratecard_role": "Migration engineer",
+      "ratecard_role_basis": "exact rate-card role",
+      "availability": [
+        {
+          "from": "2026-10-19",
+          "to": "2026-12-11",
+          "allocation_percent": 100
+        },
+        {
+          "from": "2027-01-11",
+          "to": "2027-03-31",
+          "allocation_percent": 100
+        }
+      ],
+      "synthetic": true
+    },
+    {
+      "id": "SE-06",
+      "name": "Synthetic Engineer 06",
+      "role": "Migration engineer",
+      "seniority": "mid",
+      "skills": [
+        "Java 21",
+        "Spring Boot 3",
+        "PostgreSQL",
+        "Performance testing"
+      ],
+      "ratecard_role": "Migration engineer",
+      "ratecard_role_basis": "exact rate-card role",
+      "availability": [
+        {
+          "from": "2026-12-01",
+          "to": "2027-03-31",
+          "allocation_percent": 100
+        }
+      ],
+      "synthetic": true
+    },
+    {
+      "id": "SE-07",
+      "name": "Synthetic Engineer 07",
+      "role": "Migration engineer",
+      "seniority": "junior",
+      "skills": [
+        "Java 21",
+        "Spring Boot 3",
+        "JUnit 5"
+      ],
+      "ratecard_role": "Migration engineer",
+      "ratecard_role_basis": "exact rate-card role",
+      "availability": [
+        {
+          "from": "2026-10-19",
+          "to": "2027-03-31",
+          "allocation_percent": 100
+        }
+      ],
+      "synthetic": true
+    },
+    {
+      "id": "SE-08",
+      "name": "Synthetic Engineer 08",
+      "role": "Database engineer",
+      "seniority": "senior",
+      "skills": [
+        "PostgreSQL",
+        "Flyway",
+        "Data migration",
+        "Performance testing"
+      ],
+      "ratecard_role": "Migration engineer",
+      "ratecard_role_basis": "nearest rate-card role; no dedicated database rate exists",
+      "availability": [
+        {
+          "from": "2026-11-09",
+          "to": "2027-01-22",
+          "allocation_percent": 60
+        }
+      ],
+      "synthetic": true
+    },
+    {
+      "id": "SE-09",
+      "name": "Synthetic Engineer 09",
+      "role": "Security engineer",
+      "seniority": "senior",
+      "skills": [
+        "Application security",
+        "Spring Security",
+        "Java 21",
+        "Dependency scanning"
+      ],
+      "ratecard_role": "Migration engineer",
+      "ratecard_role_basis": "nearest rate-card role; no dedicated security rate exists",
+      "availability": [
+        {
+          "from": "2027-01-04",
+          "to": "2027-02-26",
+          "allocation_percent": 50
+        }
+      ],
+      "synthetic": true
+    },
+    {
+      "id": "SE-10",
+      "name": "Synthetic Engineer 10",
+      "role": "QA automation engineer",
+      "seniority": "mid",
+      "skills": [
+        "QA automation",
+        "Playwright",
+        "JUnit 5",
+        "API testing"
+      ],
+      "ratecard_role": "Migration engineer",
+      "ratecard_role_basis": "nearest rate-card role; no dedicated QA rate exists",
+      "availability": [
+        {
+          "from": "2026-10-26",
+          "to": "2027-03-31",
+          "allocation_percent": 100
+        }
+      ],
+      "synthetic": true
+    },
+    {
+      "id": "SE-11",
+      "name": "Synthetic Engineer 11",
+      "role": "QA automation engineer",
+      "seniority": "junior",
+      "skills": [
+        "QA automation",
+        "Playwright",
+        "Manual regression testing"
+      ],
+      "ratecard_role": "Migration engineer",
+      "ratecard_role_basis": "nearest rate-card role; no dedicated QA rate exists",
+      "availability": [
+        {
+          "from": "2026-11-02",
+          "to": "2027-03-31",
+          "allocation_percent": 100
+        }
+      ],
+      "synthetic": true
+    },
+    {
+      "id": "SE-12",
+      "name": "Synthetic Engineer 12",
+      "role": "Delivery manager",
+      "seniority": "senior",
+      "skills": [
+        "Delivery management",
+        "Finance domain (invoicing and GST)",
+        "Stakeholder reporting",
+        "Risk management"
+      ],
+      "ratecard_role": "Solution architect",
+      "ratecard_role_basis": "nearest rate-card role; no dedicated delivery-management rate exists",
+      "availability": [
+        {
+          "from": "2026-10-19",
+          "to": "2027-03-31",
+          "allocation_percent": 50
+        }
+      ],
+      "synthetic": true
+    }
+  ]
+}

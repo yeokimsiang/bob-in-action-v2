@@ -1,0 +1,8 @@
+{
+  "kitVersion": "0.14.1-partner",
+  "asOf": "2026-10-22",
+  "basedOn": "0.14.0-partner",
+  "origin": "custom SI workflows on vanilla IBM Bob; not an IBM premium package",
+  "use": "interactive: a person runs /discover, /assess, /plan and /price in Bob and runs the checkers; headless Bob Shell use is documented in README.md",
+  "change": "The writer modes' instructions now name the read-only checks tool beside their own MCP tools; until now they said only the tickets, roster or rate-card tools, which ruled out the self-check their commands ask for. An annex without a WBS ID or the words planning only is now reported with that remedy in the message. No checker rule and no guard rule changed."
+}

@@ -1,0 +1,5 @@
+# The mock MCP servers load these files only if their bytes match the SHA-256 pinned in
+# tools/mcp/datasets.json, so they keep LF endings on every checkout.
+tools/mcp/data/** text eol=lf
+tools/mcp/contract.json text eol=lf
+tools/commercial/server.py text eol=lf

@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "run_id": "{{run_id}}",
+  "source_revision": "{{source_revision}}",
+  "tasks": [
+    {"wbs_id": "WBS-1.1", "deliverable_id": "DEL-001", "finding_ids": ["F-001"], "owner_role": "SI architect", "predecessors": [], "client_input": "Synthetic source snapshot; replace with accepted run input.", "duration_days": "2", "duration_basis": "Synthetic illustration only; client calendar and capacity unknown.", "exit_evidence": "EV-001", "status": "planned"},
+    {"wbs_id": "WBS-1.2", "deliverable_id": "DEL-002", "finding_ids": ["F-001"], "owner_role": "Independent QA", "predecessors": ["WBS-1.1"], "client_input": "Reviewed assessment and agreed pilot contract (pending).", "duration_days": "1", "duration_basis": "Synthetic illustration only; replace from approved capacity assumption.", "exit_evidence": "T-001", "status": "planned"}
+  ],
+  "finding_dispositions": [
+    {
+      "finding_id": "F-001",
+      "disposition": "mapped",
+      "wbs_ids": ["WBS-1.1", "WBS-1.2"],
+      "owner": null,
+      "reason": null
+    }
+  ]
+}

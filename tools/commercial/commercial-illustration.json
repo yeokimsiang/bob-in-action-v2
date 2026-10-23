@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "as_of": "2026-10-17",
+  "label": "Synthetic illustration on a demonstration SGD rate card — not a quote.",
+  "role_map": {
+    "SI developer": "Migration engineer",
+    "SI QA": "Migration engineer",
+    "SI senior reviewer": "Solution architect",
+    "SI tech lead": "Solution architect",
+    "SI PM": "Solution architect"
+  }
+}

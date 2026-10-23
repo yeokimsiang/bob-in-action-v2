@@ -1,0 +1,27 @@
+# Files Bob leaves out of its context (gitignore syntax). Not a sandbox: the guard hook in
+# .bob/hooks/pre_tool_guard.py is what refuses reads and writes.
+
+# Internal working folders (absent from the public export).
+/assist
+/.claude
+/demo
+/CLAUDE.md
+
+# Secrets never belong in context.
+.env
+.env.*
+!.env.example
+**/secrets/
+**/*credentials*.json
+**/*.pem
+**/*.key
+
+# Build and tool output.
+.git/
+**/node_modules/
+**/__pycache__/
+**/*.pyc
+**/target/
+**/bin/
+**/obj/
+**/*.log

@@ -1,0 +1,125 @@
+{
+  "schema": "si-mock-mcp-contract/v1",
+  "synthetic": true,
+  "description": "Contract for four synthetic, read-only, deterministic stdio MCP servers used by the SI kit in .bob/. Custom SI assets, not Atlassian, HR or commercial systems. No write tools exist.",
+  "protocolVersion": "2025-06-18",
+  "transport": "stdio",
+  "framing": "newline-delimited JSON-RPC 2.0",
+  "methods": ["initialize", "ping", "tools/list", "tools/call"],
+  "bobToolNameRule": "mcp__<server>__<tool>",
+  "writeTools": [],
+  "servers": {
+    "roster": {
+      "entrypoint": "tools/mcp/roster_server.py",
+      "dataset": "tools/mcp/data/roster.json",
+      "readOnly": true,
+      "tools": [
+        {
+          "name": "roster_list_people",
+          "description": "List the synthetic delivery roster (Synthetic Engineer 01-12); optional exact role filter.",
+          "inputSchema": {"type": "object", "properties": {"role": {"type": "string"}}, "required": [], "additionalProperties": false},
+          "annotations": {"readOnlyHint": true}
+        },
+        {
+          "name": "roster_find_by_skill",
+          "description": "Find synthetic roster people holding a skill (case-insensitive exact skill name match).",
+          "inputSchema": {"type": "object", "properties": {"skill": {"type": "string"}}, "required": ["skill"], "additionalProperties": false},
+          "annotations": {"readOnlyHint": true}
+        },
+        {
+          "name": "roster_availability",
+          "description": "Return each synthetic person's availability windows overlapping an inclusive YYYY-MM-DD date range.",
+          "inputSchema": {"type": "object", "properties": {"from": {"type": "string"}, "to": {"type": "string"}}, "required": ["from", "to"], "additionalProperties": false},
+          "annotations": {"readOnlyHint": true}
+        }
+      ]
+    },
+    "ratecard": {
+      "entrypoint": "tools/mcp/ratecard_server.py",
+      "dataset": "tools/commercial/server.py#SEEDS",
+      "readOnly": true,
+      "tools": [
+        {
+          "name": "ratecard_get",
+          "description": "Read the synthetic SGD demonstration rate card, its draft rates and the risk-allowance assumption, validated by the commercial engine. Unapproved; arithmetic stays with the engine.",
+          "inputSchema": {"type": "object", "properties": {"role": {"type": "string"}}, "required": [], "additionalProperties": false},
+          "annotations": {"readOnlyHint": true}
+        },
+        {
+          "name": "ratecard_roles",
+          "description": "List the role names that exist on the synthetic SGD demonstration rate card.",
+          "inputSchema": {"type": "object", "properties": {}, "required": [], "additionalProperties": false},
+          "annotations": {"readOnlyHint": true}
+        }
+      ]
+    },
+    "tickets": {
+      "entrypoint": "tools/mcp/tickets_server.py",
+      "dataset": "tools/mcp/data/tickets.json",
+      "readOnly": true,
+      "tools": [
+        {
+          "name": "tickets_search",
+          "description": "Search synthetic historical help-desk tickets (user reports, not diagnoses); optional case-insensitive text query and exact category filter.",
+          "inputSchema": {"type": "object", "properties": {"q": {"type": "string"}, "category": {"type": "string"}}, "required": [], "additionalProperties": false},
+          "annotations": {"readOnlyHint": true}
+        },
+        {
+          "name": "tickets_get",
+          "description": "Read one synthetic help-desk ticket or incident by id.",
+          "inputSchema": {"type": "object", "properties": {"id": {"type": "string"}}, "required": ["id"], "additionalProperties": false},
+          "annotations": {"readOnlyHint": true}
+        },
+        {
+          "name": "incidents_list",
+          "description": "List synthetic records of type incident; optional inclusive YYYY-MM-DD lower bound on the reported date.",
+          "inputSchema": {"type": "object", "properties": {"since": {"type": "string"}}, "required": [], "additionalProperties": false},
+          "annotations": {"readOnlyHint": true}
+        }
+      ]
+    },
+    "timesheets": {
+      "entrypoint": "tools/mcp/timesheets_server.py",
+      "dataset": "tools/mcp/data/timesheets.json",
+      "readOnly": true,
+      "tools": [
+        {
+          "name": "timesheets_list_entries",
+          "description": "List the synthetic time entries booked to the Java invoice-preview pilot (decimal-string hours); optional exact pilot work_package filter.",
+          "inputSchema": {"type": "object", "properties": {"work_package": {"type": "string"}}, "required": [], "additionalProperties": false},
+          "annotations": {"readOnlyHint": true}
+        },
+        {
+          "name": "timesheets_pilot_summary",
+          "description": "Return planned and actual hours per synthetic pilot work package, with totals. Hours only; no rates, prices or calibration factors.",
+          "inputSchema": {"type": "object", "properties": {}, "required": [], "additionalProperties": false},
+          "annotations": {"readOnlyHint": true}
+        }
+      ]
+    }
+  },
+  "bobExposedTools": [
+    "mcp__roster__roster_list_people",
+    "mcp__roster__roster_find_by_skill",
+    "mcp__roster__roster_availability",
+    "mcp__ratecard__ratecard_get",
+    "mcp__ratecard__ratecard_roles",
+    "mcp__tickets__tickets_search",
+    "mcp__tickets__tickets_get",
+    "mcp__tickets__incidents_list",
+    "mcp__timesheets__timesheets_list_entries",
+    "mcp__timesheets__timesheets_pilot_summary"
+  ],
+  "stageServerAllowlist": {
+    "discover": ["tickets"],
+    "assess": ["tickets"],
+    "plan": ["roster"],
+    "price": ["ratecard", "roster", "timesheets"]
+  },
+  "stageToolAllowlist": {
+    "discover": ["mcp__tickets__tickets_search", "mcp__tickets__tickets_get", "mcp__tickets__incidents_list"],
+    "assess": ["mcp__tickets__tickets_search", "mcp__tickets__tickets_get", "mcp__tickets__incidents_list"],
+    "plan": ["mcp__roster__roster_list_people", "mcp__roster__roster_find_by_skill", "mcp__roster__roster_availability"],
+    "price": ["mcp__ratecard__ratecard_get", "mcp__ratecard__ratecard_roles", "mcp__roster__roster_list_people", "mcp__roster__roster_find_by_skill", "mcp__roster__roster_availability", "mcp__timesheets__timesheets_list_entries", "mcp__timesheets__timesheets_pilot_summary"]
+  }
+}

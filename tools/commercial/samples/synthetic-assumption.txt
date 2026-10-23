@@ -1,0 +1,3 @@
+SYNTHETIC DEMONSTRATION ASSUMPTION — not a customer record.
+The 15 percent risk allowance exists only to demonstrate additive pricing math.
+Replace with a commercially agreed percentage and supporting source.

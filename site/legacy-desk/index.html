@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The app we started with · IBM Bob for Ingram partners</title>
+<meta name="description" content="The sample legacy app IBM Bob assessed: its code, how it starts, and a recorded copy of its screen to try.">
+<style>
+:root{--ink:#1E1F24;--black:#000000;--paper:#FFFFFF;--paper-soft:#F2F2F2;--rule:#EFEFEF;--muted:#9B9EA1;--blue:#0076D3;--blue-deep:#004B8E;--navy:#142037;--blue-graphic:#0077D4;--blue-pale:#C3E4FE;--blue-light:#4CB0FE;--blue-dark:#00599F;--grey-light:#DBDBDB;--grey:#A5A5A5;--example:#B93D0B;--font-display:"Arial Black", Arial, sans-serif;--font-heading:"Helvetica Neue", Arial, sans-serif;--font-body:Arial, "Helvetica Neue", sans-serif;--font-mono:Consolas, "Courier New", monospace;}
+:root {
+  --t-title: clamp(34px, calc(34px + 22 * (100vw - 375px) / 905), 56px);
+  --t-section: clamp(28px, calc(28px + 12 * (100vw - 375px) / 905), 40px);
+  --t-lead: clamp(19px, calc(19px + 5 * (100vw - 375px) / 905), 24px);
+  --t-body: clamp(17px, calc(17px + 1 * (100vw - 375px) / 905), 18px);
+  --t-small: 14px;
+  --t-fine: 13px;
+  --s1: 4px; --s2: 8px; --s3: 16px; --s4: 24px; --s5: 40px; --s6: 64px; --s7: 104px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font-body);
+  font-size: var(--t-body); line-height: 1.5; }
+h1, h2, h3, h4, p, ol, ul, figure { margin: 0; }
+ol, ul { padding: 0; list-style: none; }
+a { color: var(--blue-deep); text-decoration: underline; text-underline-offset: 3px; }
+a:focus-visible, summary:focus-visible, button:focus-visible, iframe:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+code, pre { font-family: var(--font-mono); font-size: 14px; }
+b, strong { font-weight: 700; }
+svg { display: block; }
+
+.wrap { width: min(86.25%, 1180px); margin: 0 auto; }
+@media (max-width: 420px) { .wrap { width: calc(100% - 32px); } }
+.measure { max-width: 38em; }
+section { scroll-margin-top: 72px; }
+
+.eyebrow { font-size: var(--t-small); letter-spacing: .08em; text-transform: uppercase; font-weight: 700; }
+.section-title { font-family: var(--font-body); font-weight: 400; font-size: var(--t-section); line-height: 1.15; color: var(--black); }
+.lead { font-size: var(--t-lead); line-height: 1.4; }
+.small { font-size: var(--t-small); }
+.fine { font-size: var(--t-fine); line-height: 1.5; }
+.arrow { font-weight: 700; text-decoration: none; }
+.arrow::after { content: " \2192"; }
+.arrow:hover { text-decoration: underline; }
+
+.bar { position: sticky; top: 0; z-index: 10; background: var(--paper); border-bottom: 1px solid var(--rule); }
+.bar-in { display: flex; align-items: center; gap: var(--s4); min-height: 56px; }
+.bar .wordmark { width: 120px; height: auto; }
+.bar-home { display: block; padding: var(--s1) 0; }
+.bar-note { flex: 1; font-size: var(--t-small); }
+.bar-back { font-size: var(--t-small); font-weight: 700; white-space: nowrap; }
+.bar-back::before { content: "\2190\00a0"; }
+@media (max-width: 760px) {
+  .bar-in { flex-wrap: wrap; gap: 0 var(--s3); padding: var(--s2) 0; }
+  .bar .wordmark { width: 96px; }
+  .bar-back { margin-left: auto; }
+  .bar-note { order: 3; flex-basis: 100%; font-size: var(--t-fine); }
+}
+
+.intro { background: var(--paper-soft); padding: var(--s5) 0 var(--s6); }
+.opener { position: relative; padding-left: 64px; }
+.opener .strip { position: absolute; left: 0; top: 0; height: 100%; width: 24px; }
+.opener .eyebrow { margin: var(--s3) 0 var(--s2); }
+.title { font-family: var(--font-heading); font-weight: 700; font-size: var(--t-title); line-height: 1.1; color: var(--black); max-width: 18em; }
+.opener .lead { margin-top: var(--s3); max-width: 34em; }
+.opener > .small { margin-top: var(--s4); max-width: 46em; }
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s2); margin-top: var(--s5); max-width: 900px; }
+.steps a { display: flex; flex-direction: column; gap: 2px; min-height: 56px; height: 100%; padding: var(--s3); background: var(--paper);
+  color: var(--ink); text-decoration: none; font-weight: 700; border-bottom: 4px solid var(--paper); }
+.steps a:hover, .steps a:focus-visible { border-bottom-color: var(--blue); }
+.steps small { font-size: var(--t-small); font-weight: 400; }
+.step-n { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; margin-bottom: var(--s1);
+  background: var(--blue); color: var(--paper); font-size: var(--t-fine); }
+@media (max-width: 760px) { .opener { padding-left: 32px; } .opener .strip { width: 14px; } .steps { grid-template-columns: 1fr; } }
+
+.step { padding: var(--s7) 0 0; }
+.step:last-of-type { padding-bottom: var(--s7); }
+.step-label { display: inline-block; margin: 0 0 var(--s2); padding: 4px 10px; border: 1px solid var(--grey-light);
+  border-left: 4px solid var(--blue); font-size: var(--t-fine); font-weight: 700; letter-spacing: 0.02em; }
+.step .lead { margin: var(--s3) 0 var(--s5); }
+.sub { font-size: var(--t-body); font-weight: 700; color: var(--black); margin: var(--s6) 0 var(--s3); }
+
+.layers { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s5); }
+.layers li { position: relative; display: flex; flex-direction: column; gap: var(--s2); padding: var(--s3); border: 1px solid var(--grey);
+  font-size: var(--t-small); line-height: 1.4; }
+.layers li b { font-size: var(--t-body); color: var(--black); }
+.layers li:not(:last-child)::after { content: "\2192"; content: "\2192" / ""; position: absolute; top: var(--s3); right: calc(-1 * var(--s5));
+  width: var(--s5); text-align: center; color: var(--grey); font-size: var(--t-body); }
+.links { display: flex; flex-direction: column; gap: 2px; margin-top: auto; }
+@media (max-width: 900px) {
+  .layers { grid-template-columns: minmax(0, 1fr); gap: var(--s3); }
+  .layers li:not(:last-child)::after { content: none; }
+}
+
+a.code { white-space: nowrap; }
+a.code code { font-size: 13px; }
+
+.table-wrap { overflow-x: auto; }
+.table { width: 100%; border-collapse: collapse; font-size: var(--t-small); }
+.table th, .table td { text-align: left; vertical-align: top; padding: var(--s2) var(--s3) var(--s2) 0; border-bottom: 1px solid var(--rule); }
+.table thead th { font-weight: 700; border-bottom-color: var(--grey-light); }
+.table tbody th { font-weight: 700; color: var(--black); }
+.parts { min-width: 860px; }
+.parts td code { font-size: 13px; }
+.table-note { margin-top: var(--s2); }
+.mark { display: inline-block; min-width: 22px; height: 22px; margin-right: var(--s1); padding: 0 4px; background: var(--blue); color: var(--paper);
+  font-size: var(--t-fine); line-height: 22px; text-align: center; vertical-align: 1px; }
+
+.finding { display: inline; }
+.finding a { font-weight: 700; white-space: nowrap; }
+.sev { font-size: var(--t-fine); font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
+
+.also { display: grid; gap: var(--s2); max-width: 46em; font-size: var(--t-body); }
+.also li { padding-left: var(--s3); border-left: 3px solid var(--grey-light); }
+.more { display: flex; flex-wrap: wrap; gap: var(--s2) var(--s4); margin-top: var(--s4); }
+
+.show { display: grid; grid-template-columns: 8fr 4fr; gap: var(--s5); align-items: start; }
+.show > * { min-width: 0; }
+@media (max-width: 900px) { .show { grid-template-columns: 1fr; gap: var(--s4); } }
+.notes { counter-reset: note; display: grid; gap: var(--s3); }
+.notes li { counter-increment: note; position: relative; padding-left: 36px; font-size: var(--t-body); }
+.notes li::before { content: counter(note); position: absolute; left: 0; top: 2px; width: 24px; height: 24px;
+  border: 1px solid var(--ink); font-size: var(--t-fine); font-weight: 700; display: flex; align-items: center; justify-content: center; }
+#use .notes li::before { border-color: var(--blue); background: var(--blue); color: var(--paper); }
+.fig { font-weight: 700; color: var(--black); white-space: nowrap; }
+
+.runs { display: grid; gap: var(--s3); }
+.run { background: var(--navy); color: var(--paper); padding: var(--s3) var(--s4); display: grid; gap: var(--s2); min-width: 0; }
+.run .cmd { font-family: var(--font-mono); font-size: 13px; color: var(--blue-pale); overflow-wrap: anywhere; }
+.run .cmd::before { content: "\203A\00a0"; }
+.run .status { font-family: var(--font-mono); font-size: 13px; color: var(--blue-light); }
+.run .out { margin: 0; font-size: 13px; color: var(--grey-light); white-space: pre-wrap; overflow-wrap: anywhere; }
+.run .cut { color: var(--blue-light); font-style: italic; }
+.tools { margin-top: var(--s4); max-width: 46em; }
+
+.try { margin-bottom: var(--s4); }
+.try-h { font-size: var(--t-body); margin-bottom: var(--s3); max-width: 46em; }
+.try-row { display: flex; flex-wrap: wrap; gap: var(--s2); }
+.try-btn { display: inline-flex; flex-direction: column; align-items: flex-start; gap: 2px; min-height: 48px; padding: var(--s2) var(--s3);
+  border: 1px solid var(--blue); background: var(--paper); color: var(--ink); font: inherit; font-size: var(--t-small); text-align: left; cursor: pointer; border-radius: 0; }
+.try-btn b { color: var(--blue-deep); }
+.try-btn:hover { background: var(--blue-pale); }
+.try-btn[aria-pressed="true"] { background: var(--blue); color: var(--paper); }
+.try-btn[aria-pressed="true"] b { color: var(--paper); }
+.try-reset { border-color: var(--ink); }
+.try-note { min-height: 1.5em; margin-top: var(--s3); font-size: var(--t-small); font-weight: 700; color: var(--black); scroll-margin-top: 96px; }
+.desk-frame { max-width: 760px; border: 1px solid var(--grey); background: var(--paper-soft); }
+.desk-frame { position: sticky; top: 72px; }
+.desk-frame iframe { display: block; width: 100%; height: min(780px, calc(100vh - 96px)); border: 0; }
+@media (max-width: 900px) { .desk-frame { position: static; } .desk-frame iframe { height: 640px; } }
+.can { margin-top: var(--s2); }
+
+details.deeper { margin-top: var(--s5); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); max-width: 46em; }
+details.deeper > summary { cursor: pointer; padding: var(--s3) 0; font-size: var(--t-small); font-weight: 700; color: var(--blue-deep); list-style: none; }
+details.deeper > summary::-webkit-details-marker { display: none; }
+details.deeper > summary::before { content: "+\00a0"; }
+details.deeper[open] > summary::before { content: "\2212\00a0"; }
+.deeper-body { display: grid; gap: var(--s3); padding: var(--s2) 0 var(--s4); }
+
+.foot { border-top: 1px solid var(--rule); padding: var(--s5) 0 var(--s6); }
+.foot-in { display: grid; gap: var(--s3); }
+.foot .back { justify-self: start; }
+.foot .back::after { content: none; }
+.foot .back::before { content: "\2190\00a0"; }
+
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="wrap bar-in">
+    <a class="bar-home" href="../" data-back><svg class="wordmark" role="img" aria-label="Ingram Micro: back to the demo" viewBox="0 0 523.77 95.4" xmlns="http://www.w3.org/2000/svg" overflow="hidden"><defs></defs><g><g><path d="M495.17 20.36C495.17 18.14 497.31 17.23 500.79 17.23 504.27 17.23 506.41 18.06 506.41 20.36 506.41 23.22 502.94 23.55 500.77 23.55 497.3 23.55 495.17 22.64 495.17 20.36M509.72 20.36C509.72 16 506.38 12.97 500.77 12.97 496.71 12.97 491.85 14.99 491.85 20.36 491.85 25.73 496.16 27.8 500.77 27.8 505.38 27.8 509.72 25.49 509.72 20.36M495.2 40.82 495.2 37.73C495.2 35.81 496.41 35.11 497.39 35.11 498.48 35.11 499.63 35.85 499.63 37.73L499.63 40.82 495.2 40.82ZM502.62 40.82 502.62 37.86 509.47 35.21 509.47 30.7 501.8 33.92C501.12 32.05 499.3 30.91 497.32 30.91 494.12 30.91 492.11 33 492.11 37.18L492.11 44.88 509.47 44.88 509.47 40.82 502.62 40.82ZM498.57 48.73C494.39 49.18 491.85 51.41 491.85 55.76 491.85 60.98 495.98 63.55 500.79 63.55 505.6 63.55 509.72 61.06 509.72 55.89 509.72 51.89 507.37 49.16 503.38 48.73L503.14 52.68C504.81 52.91 506.41 53.79 506.41 55.69 506.41 58.76 503.35 59.03 500.96 59.03 498.86 59.03 495.12 58.75 495.12 55.89 495.12 53.67 496.91 53 498.83 52.98L498.57 48.73ZM509.47 67.46 492.1 67.46 492.1 71.51 509.47 71.51 509.47 67.46ZM509.47 84.93 509.47 87.71 495.32 91.89 495.32 91.99 509.47 91.99 509.47 95.4 492.11 95.4 492.11 89.05 502.51 86.01 492.11 82.83 492.11 76.47 509.47 76.47 509.47 80.51 495.32 80.51 495.32 80.62 509.47 84.93ZM151.99 95.4 86.29 95.4C81.2 76.52 70.42 36.67 70.42 36.67L70.24 36.67 70.24 95.4 43.38 95.4 43.38 14.23 90 14.23C94.91 32.96 105.21 71.47 105.21 71.47L105.38 71.47 105.38 14.23 132.31 14.23 132.31 26.56C125.74 33.49 121.76 42.35 121.76 53.46 121.76 69.41 130.71 89.2 151.98 95.4M471.21 14.23 471.21 95.4 443.08 95.4 443.08 31.83 442.66 31.83 426.5 95.4 400.52 95.4 384.41 31.83 383.98 31.83 383.98 95.4 334.77 95.4 329.86 77.92 303.41 77.92 298.51 95.4 251.49 95.4C251.49 95.4 249.89 83.44 249.48 80.46 248.09 70.4 245.06 67.96 239.06 67.96L230.85 67.96 230.85 95.4 182.68 95.4C196.56 92.24 209.09 85.94 216.26 81.61L206.15 43.25 179.25 50.34 184.98 72.1C183.3 73.3 177.7 75.26 173.86 75.26 161.01 75.26 154.92 62.39 154.92 51.3 154.92 33.45 173.1 26.58 189.14 26.58 192.86 26.58 197.68 26.91 198.36 26.99L195 14.25 251.06 14.25C273.5 14.25 282.2 24.89 282.2 36.21 282.2 53.34 265.85 56.56 262.74 57.11 262.69 57.12 262.69 57.59 262.74 57.6 269.27 58.84 274.06 62 277.13 67.51 277.02 67.32 294.3 18.71 295.86 14.25L338.96 14.25 357.15 65.15 357.38 65.15 357.38 14.23 403.73 14.23C403.73 14.23 414.47 58.67 414.54 58.67 418.03 43.88 425.05 14.23 425.05 14.23L471.22 14.23ZM0 14.23 31.22 14.23C31.22 14.23 31.18 68.17 31.18 95.4 30.98 95.4 0.19 95.42 0 95.4L0 14.23ZM316.39 31.66 307.66 58.42 325.66 58.42 316.85 31.66 316.38 31.66ZM230.84 49.66 240.12 49.66C247.71 49.66 250.88 45.74 250.88 40.94 250.88 34.81 245.65 32.4 240.12 32.4L230.84 32.4 230.84 49.66Z" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" fill="#0077D4" fill-opacity="1"/><path d="M513.47 5.15C513.47 2.31 515.78 0 518.62 0 521.46 0 523.77 2.31 523.77 5.15 523.77 7.99 521.46 10.3 518.62 10.3 515.78 10.3 513.47 7.99 513.47 5.15M522.52 5.15C522.52 2.74 520.78 1 518.63 1 516.48 1 514.73 2.74 514.73 5.15 514.73 7.56 516.47 9.31 518.63 9.31 520.79 9.31 522.52 7.56 522.52 5.15M516.64 2.21 518.81 2.21C520.21 2.21 520.96 2.7 520.96 3.92 520.96 4.92 520.39 5.4 519.43 5.49L521 8.05 519.88 8.05 518.37 5.54 517.71 5.54 517.71 8.05 516.62 8.05 516.62 2.21ZM517.73 4.71 518.68 4.71C519.32 4.71 519.88 4.63 519.88 3.84 519.88 3.16 519.25 3.04 518.69 3.04L517.72 3.04 517.72 4.71Z" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" fill="#0077D4" fill-opacity="1"/></g></g></svg></a>
+    <p class="bar-note">Recorded copy of the sample legacy app · synthetic data</p>
+    <a class="bar-back" href="../" data-back>Back to the demo</a>
+  </div>
+</header>
+
+<main>
+<section class="intro" id="top">
+  <div class="wrap">
+    <header class="opener">
+      <svg class="strip" aria-hidden="true" focusable="false" preserveAspectRatio="xMinYMin slice" viewBox="0 0 106.25 1078.63" xmlns="http://www.w3.org/2000/svg" overflow="hidden"><defs><clipPath id="g2-clip"><rect x="0" y="0" width="106.25" height="1078.63" fill="none"/></clipPath></defs><g><g clip-path="url(#g2-clip)"><path d="M23.89 4441.81C43.83 4441.81 51.99 4461.01 51.99 4492.21 51.99 4523.41 44.58 4542.61 23.89 4542.61-1.74 4542.61-4.73 4511.52-4.73 4492.04-4.73 4460.89 3.43 4441.81 23.89 4441.81M23.89 4572.32C63.03 4572.32 90.21 4542.38 90.21 4492.04 90.21 4455.66 72.11 4411.99 23.89 4411.99-24.33 4411.99-42.89 4450.67-42.89 4492.04-42.89 4533.41-22.2 4572.32 23.89 4572.32M-159.61 4442.04-131.85 4442.04C-114.61 4442.04-108.35 4452.9-108.35 4461.7-108.35 4471.47-115.02 4481.81-131.85 4481.81L-159.61 4481.81-159.61 4442.04ZM-159.61 4508.59-133.06 4508.59-109.27 4570.08-68.81 4570.08-97.66 4501.29C-80.88 4495.2-70.65 4478.82-70.65 4461.06-70.65 4432.38-89.39 4414.34-126.91 4414.34L-195.99 4414.34-195.99 4570.08-159.61 4570.08-159.61 4508.59ZM-230.58 4472.27C-234.66 4434.74-254.6 4411.99-293.68 4411.99-340.46 4411.99-363.56 4449.06-363.56 4492.22-363.56 4535.38-341.2 4572.33-294.83 4572.33-258.97 4572.33-234.43 4551.24-230.58 4515.49L-265.98 4513.31C-268.05 4528.25-275.98 4542.62-292.99 4542.62-320.52 4542.62-322.99 4515.15-322.99 4493.77-322.99 4474.92-320.52 4441.36-294.83 4441.36-274.89 4441.36-268.91 4457.39-268.74 4474.64L-230.58 4472.28ZM-398.56 4570.08-398.56 4414.28-434.88 4414.28-434.88 4570.08-398.56 4570.08ZM-555.28 4570.08-580.22 4570.08-617.69 4443.13-618.61 4443.13-618.61 4570.08-649.18 4570.08-649.18 4414.34-592.23 4414.34-564.99 4507.61-536.43 4414.34-479.42 4414.34-479.42 4570.08-515.68 4570.08-515.68 4443.13-516.66 4443.13-555.28 4570.08ZM-649.18 1363.35-649.18 774C-479.82 728.37-122.36 631.65-122.36 631.65L-122.36 630.04-649.18 630.04-649.18 389.07 78.88 389.07 78.88 807.28C-89.16 851.36-434.55 943.71-434.55 943.71L-434.55 945.26 78.88 945.26 78.88 1186.86-31.74 1186.86C-93.92 1127.9-173.4 1092.27-273 1092.27-416.1 1092.27-593.62 1172.55-649.19 1363.35M78.88 4226.87-649.2 4226.87-649.2 3974.52-78.98 3974.52-78.98 3970.78-649.19 3825.78-649.19 3592.74-78.98 3448.26-78.98 3444.41-649.19 3444.41-649.19 3002.99-492.36 2958.91-492.36 2721.62-649.19 2677.66-649.19 2255.83C-649.19 2255.83-541.89 2241.52-515.17 2237.78-424.89 2225.31-403.05 2198.13-403.05 2144.28L-403.05 2070.61-649.19 2070.61-649.19 1638.55C-620.86 1763.03-564.37 1875.44-525.46 1939.8L-181.33 1849.11-244.89 1607.85-440.11 1659.23C-450.86 1644.12-468.44 1593.89-468.44 1559.52-468.44 1444.29-352.98 1389.58-253.5 1389.58-93.39 1389.58-31.73 1552.62-31.73 1696.52-31.73 1729.85-34.66 1773.13-35.41 1779.22L78.9 1749.05 78.9 2251.91C78.9 2453.22-16.56 2531.27-118.11 2531.27-271.78 2531.27-300.69 2384.61-305.63 2356.73-305.74 2356.27-309.94 2356.27-310 2356.73-321.09 2415.29-349.48 2458.28-398.9 2485.81-397.23 2484.83 38.84 2639.83 78.9 2653.85L78.9 3040.45-377.69 3203.61-377.69 3205.68 78.88 3205.68 78.88 3621.47C78.88 3621.47-319.79 3717.79-319.79 3718.42-187.09 3749.74 78.88 3812.73 78.88 3812.73L78.88 4226.85ZM78.88 0 78.88 280.05C78.88 280.05-405.01 279.7-649.2 279.7-649.2 277.92-649.37 1.72-649.2 0L78.88 0ZM-77.49 2838.07-317.54 2759.8-317.54 2921.29-77.49 2842.27-77.49 2838.07ZM-238.92 2070.63-238.92 2153.9C-238.92 2222-203.75 2250.39-160.7 2250.39-105.7 2250.39-84.09 2203.44-84.09 2153.9L-84.09 2070.63-238.91 2070.63Z" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" fill="#0077D4" fill-opacity="1"/></g></g></svg>
+      <p class="eyebrow">The app we started with</p>
+      <h1 class="title">The invoice desk Bob assessed, before anything moved</h1>
+      <p class="lead">A small Java 8 web app for a made-up distributor, Ingram Trials. It was built to be imperfect on purpose, with the kinds of problems inherited code has. Bob read this code and wrote the four documents from it; each of the seven migrations moved the same piece of it, the invoice preview.</p>
+      <ol class="steps">
+        <li><a href="#code"><span class="step-n">1</span> The code <small>Four layers, and where each part of the desk lives</small></a></li>
+        <li><a href="#start"><span class="step-n">2</span> Start it <small>Build, start and check it with the app's own scripts</small></a></li>
+        <li><a href="#use"><span class="step-n">3</span> Use it <small>Its screen, answering as the real app did</small></a></li>
+      </ol>
+      <p class="small">Every answer and figure on this page came from the real app, run on our machine on 22 October 2026. Nothing on it reaches a server.</p>
+    </header>
+  </div>
+</section>
+
+<section class="step" id="code" aria-labelledby="code-h">
+  <div class="wrap">
+    <p class="step-label">Step 1</p>
+    <h2 class="section-title" id="code-h">The code</h2>
+    <p class="lead measure">Four layers, the way many business apps of its age were built. The screen asks the server for everything; one Java class holds nearly all the rules and talks to the database.</p>
+    <ol class="layers">
+      <li><b>Screen</b><span>One page and its script, in the browser.</span><span class="links"><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/resources/static/index.html"><code>index.html</code></a> <a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/resources/static/desk.js"><code>desk.js</code></a></span></li>
+      <li><b>Routes</b><span>Turns each address the screen calls into a call on the rules.</span><span class="links"><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/DeskController.java#L20-L63"><code>DeskController.java</code> lines 20&#8211;63</a></span></li>
+      <li><b>Rules</b><span>Prices, invoices, credit notes, jobs and reports, in one class.</span><span class="links"><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/Desk.java"><code>Desk.java</code></a></span></li>
+      <li><b>Data</b><span>An H2 database in a file. The rules create its eight tables when the app starts, and fill in the sample data the first time.</span><span class="links"><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/Desk.java#L37-L60"><code>Desk.java</code> lines 37&#8211;60</a></span></li>
+    </ol>
+
+    <h3 class="sub">Each part of the desk, and the code it runs</h3>
+    <div class="table-wrap">
+      <table class="table parts">
+        <thead><tr><th scope="col">On the screen</th><th scope="col">Address it calls</th><th scope="col">Rules</th><th scope="col">What Bob found there</th></tr></thead>
+        <tbody>
+          <tr><th scope="row"><span class="mark">1</span> Find customer</th><td><code>GET /api/customers</code><br><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/DeskController.java#L33-L34"><code>DeskController.java</code> lines 33&#8211;34</a></td><td><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/Desk.java#L92-L95"><code>Desk.java</code> lines 92&#8211;95</a></td><td><span class="finding"><a href="../#assess">F-001</a> <span class="sev">critical</span> <span>SQL injection via string-concatenated LIKE clauses in customers() and invoices()</span></span></td></tr>
+          <tr><th scope="row"><span class="mark">2</span> Preview invoice</th><td><code>POST /api/invoices/preview</code><br><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/DeskController.java#L41-L42"><code>DeskController.java</code> lines 41&#8211;42</a></td><td><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/Desk.java#L146-L176"><code>Desk.java</code> lines 146&#8211;176</a>, using <a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/Desk.java#L107-L113"><code>Desk.java</code> lines 107&#8211;113</a></td><td><span class="finding"><a href="../#assess">F-004</a> <span class="sev">high</span> <span>Preview/save bulk-discount off-by-one: qty=100 discounted in preview but not in save</span></span></td></tr>
+          <tr><th scope="row"><span class="mark">3</span> Save invoice</th><td><code>POST /api/invoices</code><br><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/DeskController.java#L43-L45"><code>DeskController.java</code> lines 43&#8211;45</a></td><td><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/Desk.java#L177-L187"><code>Desk.java</code> lines 177&#8211;187</a>, using <a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/Desk.java#L114-L120"><code>Desk.java</code> lines 114&#8211;120</a></td><td><span class="finding"><a href="../#assess">F-013</a> <span class="sev">medium</span> <span>Invoice and credit-request IDs generated via COALESCE MAX+1, no database sequence</span></span></td></tr>
+          <tr><th scope="row"><span class="mark">4</span> Search invoices</th><td><code>GET /api/invoices</code><br><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/DeskController.java#L37-L38"><code>DeskController.java</code> lines 37&#8211;38</a></td><td><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/Desk.java#L129-L133"><code>Desk.java</code> lines 129&#8211;133</a></td><td>F-001 again: the same pattern, in a second place.</td></tr>
+          <tr><th scope="row"><span class="mark">5</span> Create approved request</th><td><code>POST /api/credit-requests</code><br><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/DeskController.java#L48-L50"><code>DeskController.java</code> lines 48&#8211;50</a></td><td><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/Desk.java#L194-L207"><code>Desk.java</code> lines 194&#8211;207</a></td><td><span class="finding"><a href="../#assess">F-008</a> <span class="sev">medium</span> <span>Credit requests auto-approved with no workflow or authorization check</span></span></td></tr>
+          <tr><th scope="row">Run credit notes</th><td><code>POST /api/jobs/credit-notes</code><br><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/DeskController.java#L57-L58"><code>DeskController.java</code> lines 57&#8211;58</a></td><td><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/Desk.java#L220-L225"><code>Desk.java</code> lines 220&#8211;225</a>, then <a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/Desk.java#L242-L255"><code>Desk.java</code> lines 242&#8211;255</a></td><td><span class="finding"><a href="../#assess">F-015</a> <span class="sev">medium</span> <span>Reflective job dispatch uses deprecated Class.newInstance(); no compile-time binding</span></span></td></tr>
+          <tr><th scope="row"><span class="mark">6</span> Run delivered-order invoices</th><td><code>POST /api/jobs/invoices</code><br><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/DeskController.java#L55-L56"><code>DeskController.java</code> lines 55&#8211;56</a></td><td><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/Desk.java#L220-L225"><code>Desk.java</code> lines 220&#8211;225</a>, then <a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/Desk.java#L226-L241"><code>Desk.java</code> lines 226&#8211;241</a></td><td><span class="finding"><a href="../#assess">F-003</a> <span class="sev">high</span> <span>Batch job trigger endpoints unauthenticated in inspected source</span></span></td></tr>
+          <tr><th scope="row"><span class="mark">7</span> Monthly sales</th><td><code>GET /api/reports/monthly</code><br><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/DeskController.java#L59-L60"><code>DeskController.java</code> lines 59&#8211;60</a></td><td><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/Desk.java#L256-L279"><code>Desk.java</code> lines 256&#8211;279</a></td><td><span class="finding"><a href="../#assess">F-016</a> <span class="sev">high</span> <span>H2-specific FORMATDATETIME SQL function used in reporting queries</span></span></td></tr>
+          <tr><th scope="row">Annual GST</th><td><code>GET /api/reports/gst</code><br><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/DeskController.java#L61-L62"><code>DeskController.java</code> lines 61&#8211;62</a></td><td><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/Desk.java#L280-L291"><code>Desk.java</code> lines 280&#8211;291</a></td><td>F-016 again.</td></tr>
+          <tr><th scope="row">Not on the screen: the health check</th><td><code>GET /api/health</code><br><a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/DeskController.java#L26-L32"><code>DeskController.java</code> lines 26&#8211;32</a></td><td>None: the routes answer it themselves.</td><td><span class="finding"><a href="../#assess">F-002</a> <span class="sev">high</span> <span>Internal database connection string exposed in /api/health response body</span></span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small table-note">The numbers match the blue marks on the screen in Step 3. Each finding ID links to the Assess stage of the demo.</p>
+
+    <h3 class="sub">Also in the folder</h3>
+    <ul class="also">
+      <li><b>Jobs.</b> <a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/resources/jobs.properties"><code>jobs.properties</code></a> names the two job classes, and the rules load whichever one is asked for by its name. A third job class is in no list, and nothing in the app uses the legacy invoice printer class.</li>
+      <li><b>Schedules.</b> <a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/ScheduledJobs.java"><code>ScheduledJobs.java</code></a> would run both jobs every night, but a setting keeps them switched off.</li>
+      <li><b>One test.</b> <a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/test/java/com/ingramtrials/base/DeskMoneyTest.java"><code>DeskMoneyTest.java</code></a> checks how money is rounded, and nothing else.</li>
+      <li><b>Scripts and documents that came with it.</b> The app's own scripts to build, start and stop it (Step 2) and to start a job by hand. Its scripts and docs folders hold an export script and a customer-accounts document; some of that is out of date on purpose.</li>
+    </ul>
+    <p class="more"><a class="arrow" href="https://github.com/yeokimsiang/bob-in-action-v2/tree/main/app">The whole app folder</a> <a class="arrow" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/main/app/README.md">The app's README</a></p>
+  </div>
+</section>
+
+<section class="step" id="start" aria-labelledby="start-h">
+  <div class="wrap">
+    <p class="step-label">Step 2</p>
+    <h2 class="section-title" id="start-h">Start it</h2>
+    <p class="lead measure">On Windows with Java 8 and Maven installed, the app's own scripts build it, start it and stop it. This is what they printed when we recorded it.</p>
+    <div class="show">
+      <div class="runs">
+        <div class="run"><p class="cmd">.\app\Build.ps1</p><pre class="out"><span class="cut">&#8943; 4 lines not shown</span>
+<span>[INFO] Building base-desk 1.0.0</span>
+<span class="cut">&#8943; 33 lines not shown</span>
+<span>[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.043 s - in com.ingramtrials.base.DeskMoneyTest</span>
+<span class="cut">&#8943; 3 lines not shown</span>
+<span>[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0</span>
+<span class="cut">&#8943; 8 lines not shown</span>
+<span>[INFO] BUILD SUCCESS</span>
+<span class="cut">&#8943; 1 line not shown</span>
+<span>[INFO] Total time:  47.042 s</span>
+<span class="cut">&#8943; 2 lines not shown</span></pre></div>
+        <div class="run"><p class="cmd">.\app\Start.ps1 -NoBuild</p><pre class="out"><span>App ready at http://127.0.0.1:18080/</span></pre></div>
+        <div class="run"><p class="cmd">GET http://127.0.0.1:18080/api/health</p><p class="status">HTTP <span>200</span></p><pre class="out">{
+  "status": <span>&quot;UP&quot;</span>,
+  "case": <span>&quot;BASE&quot;</span>,
+  "javaVersion": <span>&quot;1.8.0_504&quot;</span>,
+  "businessDate": <span>&quot;2026-10-13&quot;</span>,
+  <span class="cut">&#8943; &quot;database&quot; not shown</span>
+}</pre></div>
+        <div class="run"><p class="cmd">.\app\Stop.ps1</p><pre class="out"><span>App server stopped on port 18080</span></pre></div>
+      </div>
+      <ol class="notes">
+        <li><b>Build.</b> Maven compiles the app with Java 8 and runs its one test. Where lines are left out, a marked line says how many; no line shown is changed.</li>
+        <li><b>Start.</b> Starts the built app on this machine only, so nothing outside it can reach it, and waits until it answers.</li>
+        <li><b>Check it is up.</b> One field of the answer is not shown here: <code>database</code>, which gives the database file's path on our machine. That the app hands this out at all is one of Bob's findings: <span class="finding"><a href="../#assess">F-002</a> <span class="sev">high</span> <span>Internal database connection string exposed in /api/health response body</span></span></li>
+        <li><b>Stop.</b> Stops the server the start script started.</li>
+      </ol>
+    </div>
+    <p class="small tools">Recorded with Java <span>1.8.0_504</span> and <span>Apache Maven 3.10.0</span> on Windows. To run it yourself, follow <a href="https://github.com/yeokimsiang/bob-in-action-v2/blob/main/app/README.md">the app's README</a>.</p>
+  </div>
+</section>
+
+<section class="step" id="use" aria-labelledby="use-h">
+  <div class="wrap">
+    <p class="step-label">Step 3</p>
+    <h2 class="section-title" id="use-h">Use it</h2>
+    <p class="lead measure">The app's own screen, unchanged, answering from what the real app answered when we recorded it. The blue numbers on the screen are ours; the notes beside it say what each part does, which code runs and what Bob found there.</p>
+    <div class="try" role="group" aria-labelledby="try-h">
+      <p class="try-h" id="try-h"><b>Try this order.</b> Fills in the screen with its own controls; then press the button the note names.</p>
+      <div class="try-row">
+        <button type="button" class="try-btn" data-try="aster"><b>Aster Office Supplies</b> <span>100 &#215; A4 paper carton</span></button>
+        <button type="button" class="try-btn" data-try="merlion"><b>Merlion Retail</b> <span>10 &#215; Black toner cartridge</span></button>
+        <button type="button" class="try-btn" data-try="straits"><b>Straits Workshop</b> <span>3 &#215; USB cable pack, 101 &#215; A4 paper carton</span></button>
+        <button type="button" class="try-btn" data-try="credit"><b>A credit request</b> <span><b class="fig">48.50</b> off invoice 1001</span></button>
+        <button type="button" class="try-btn try-reset" data-try=""><b>Start again</b> <span>The sample data, nothing filled in</span></button>
+      </div>
+      <p class="try-note" id="try-note" role="status" aria-live="polite"></p>
+    </div>
+    <div class="show">
+      <div class="desk-frame"><iframe id="desk-frame" src="app/index.html" title="The recorded invoice desk"></iframe></div>
+      <ol class="notes">
+        <li><b>Find customer.</b> Searches the customers as you type. <a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/Desk.java#L92-L95"><code>Desk.java</code> lines 92&#8211;95</a> puts the typed text straight into the database query: <span class="finding"><a href="../#assess">F-001</a> <span class="sev">critical</span> <span>SQL injection via string-concatenated LIKE clauses in customers() and invoices()</span></span></li>
+        <li><b>Preview invoice.</b> Prices the lines with the customer's discount and GST, and saves nothing. Aster Office Supplies, 100 cartons of A4 paper at <b class="fig">10.00</b>: <b class="fig">931.00</b> plus GST <b class="fig">83.79</b>, total <b class="fig">1014.79</b>. The bulk discount starts at 100 here: <a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/Desk.java#L107-L113"><code>Desk.java</code> lines 107&#8211;113</a>.</li>
+        <li><b>Save invoice.</b> Prices the order again with a second copy of the rule, which gives the bulk discount only above 100 (<a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/Desk.java#L114-L120"><code>Desk.java</code> lines 114&#8211;120</a>). The same order saves at <b class="fig">1035.50</b>, not the <b class="fig">1014.79</b> its preview showed. That gap is <span class="finding"><a href="../#assess">F-004</a> <span class="sev">high</span> <span>Preview/save bulk-discount off-by-one: qty=100 discounted in preview but not in save</span></span></li>
+        <li><b>Search invoices.</b> The same pattern as note 1, in <a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/Desk.java#L129-L133"><code>Desk.java</code> lines 129&#8211;133</a>: F-001 again.</li>
+        <li><b>Create approved request.</b> Any amount up to the invoice's subtotal is saved as approved at once, with no one approving it (<a class="code" href="https://github.com/yeokimsiang/bob-in-action-v2/blob/r17/app/src/main/java/com/ingramtrials/base/Desk.java#L205"><code>Desk.java</code> line 205</a>). Run credit notes then issues it: <b class="fig">CN-2026-00001</b>, <b class="fig">48.50</b> plus GST <b class="fig">4.37</b>, total <b class="fig">52.87</b>. <span class="finding"><a href="../#assess">F-008</a> <span class="sev">medium</span> <span>Credit requests auto-approved with no workflow or authorization check</span></span></li>
+        <li><b>Run delivered-order invoices.</b> Invoices every order delivered the day before the app's fixed date. Order 7001, 101 cartons for Aster, becomes <b class="fig">INV-2026-00002</b> at <b class="fig">1024.94</b>. Anyone who can reach the app can start it: <span class="finding"><a href="../#assess">F-003</a> <span class="sev">high</span> <span>Batch job trigger endpoints unauthenticated in inspected source</span></span></li>
+        <li><b>Monthly sales.</b> Totals a month's invoices and credit notes. On the sample data, October 2026 holds <b class="fig">1</b> invoice, INV-2026-00001 for Merlion Retail, at <b class="fig">528.65</b>. Its query uses an H2 date function that PostgreSQL and most other production databases don't have: <span class="finding"><a href="../#assess">F-016</a> <span class="sev">high</span> <span>H2-specific FORMATDATETIME SQL function used in reporting queries</span></span></li>
+      </ol>
+    </div>
+    <div class="can">
+      <h3 class="sub">What this copy can show</h3>
+      <ul class="also">
+        <li>Lists, an invoice's details, searches for any part of a customer's name or an invoice number, and both reports for 2026 answer as the real app did on the sample data.</li>
+        <li>Preview, Save, credit requests and the two jobs answer for the recorded orders: use Try this order first. After a save, request or job, the lists and reports show its result.</li>
+        <li>Anything else, such as another quantity, gets a note that this copy cannot show it: answering would mean rewriting the app's rules in the browser. For that, start the real app (Step 2).</li>
+      </ul>
+    </div>
+    <details class="deeper">
+      <summary>How this copy works</summary>
+      <div class="deeper-body">
+        <p>The screen is the app's own three files. Its page differs from the app's in two places only: its links to them are relative, and two scripts load before the app's own: the recording, and a small script that answers the app's calls from it in place of a server.</p>
+        <p>The recording holds every answer the real app gave, in each state the recorded orders lead to: the sample data, after each order is saved, after the invoice job, and after a credit request, its credit note and then the invoice job. Saving or starting a job moves the copy to the state the real app was in after doing the same.</p>
+      </div>
+    </details>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <a class="arrow back" href="../" data-back>Back to the demo</a>
+    <p class="fine">Ingram Trials, its customers and its data are made up. The app is a sample built for this demo, not Ingram Micro software.</p>
+  </div>
+</footer>
+<script>
+// The desk page. "Try this order" reloads the recorded desk with that order (a fresh start each time, so
+// the screen and its data begin from the sample data); the desk's own notices are repeated beside it; and
+// Back returns a visitor who came from the demo page to the place they left.
+(function () {
+  "use strict";
+  var frame = document.getElementById("desk-frame");
+  var note = document.getElementById("try-note");
+  var buttons = Array.prototype.slice.call(document.querySelectorAll("[data-try]"));
+  var loads = 0;
+  var chosen = "";
+  var NEXT = {
+    order: "Filled in. Now press Preview invoice or Save invoice on the screen.",
+    credit: "Filled in. Now press Create approved request, then Run credit notes under Operations."
+  };
+  var OFF_SCRIPT = "That was not recorded, so this copy cannot answer it. Use Try this order, or start the real app (Step 2).";
+
+  buttons.forEach(function (button) {
+    button.setAttribute("aria-pressed", "false");
+    button.addEventListener("click", function () {
+      chosen = button.getAttribute("data-try");
+      loads += 1;
+      note.textContent = chosen ? "" : "Back to the sample data.";
+      buttons.forEach(function (other) {
+        other.setAttribute("aria-pressed", String(other === button && chosen !== ""));
+      });
+      // replace(), not a new src: a reload must not add a step to the history, or Back would only step the desk back.
+      var next = "app/index.html?" + (chosen ? "try=" + encodeURIComponent(chosen) + "&" : "") + "load=" + loads;
+      frame.contentWindow.location.replace(new URL(next, window.location.href).href);
+    });
+  });
+
+  window.addEventListener("message", function (event) {
+    if (event.source !== frame.contentWindow || !event.data || event.data.source !== "legacy-desk") return;
+    if (event.data.type === "filled") {
+      note.textContent = chosen === "credit" ? NEXT.credit : NEXT.order;
+      // On a narrow screen the desk sits below the buttons, out of sight: bring the note and the desk up.
+      if (window.matchMedia("(max-width: 900px)").matches) note.scrollIntoView({ block: "start" });
+    }
+    if (event.data.type === "not-recorded") note.textContent = OFF_SCRIPT;
+  });
+
+  function page(url) {
+    var parsed = new URL(url, window.location.href);
+    return parsed.origin + parsed.pathname.replace(/index\.html$/, "");
+  }
+  Array.prototype.forEach.call(document.querySelectorAll("[data-back]"), function (link) {
+    link.addEventListener("click", function (event) {
+      if (document.referrer && page(document.referrer) === page(link.href) && window.history.length > 1) {
+        event.preventDefault();
+        window.history.back();
+      }
+    });
+  });
+})();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+# Your Bob runs: one folder per engagement, often holding client material. Keep them out of git.
+/runs/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Secrets and personal settings
+.env
+.env.*
+.claude/settings.local.json
+
+# Editor and OS files
+.idea/
+.DS_Store
+Thumbs.db
+~$*

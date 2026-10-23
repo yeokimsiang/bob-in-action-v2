@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Invoice Preview Panel — TypeScript pilot</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true">IT</span>
+    <span class="brand-name">Ingram Trials</span>
+    <strong>Invoice Preview Panel</strong>
+  </div>
+  <div class="tag">TypeScript pilot · invoice-preview-v1</div>
+</header>
+
+<main>
+  <div class="workspace">
+    <div class="intro">
+      <p class="eyebrow">INVOICE PREVIEW · BOUNDED PILOT</p>
+      <h1>Preview panel</h1>
+      <p>
+        This isolated panel demonstrates the TypeScript client boundary for
+        <code>invoice-preview-v1</code>. It POSTs only to
+        <code>/api/invoices/preview</code> and never to a persistence route.
+        The server resolves the customer name and tier from the supplied customer ID.
+      </p>
+    </div>
+
+    <!--
+      [data-preview-form] — the form containing all four named inputs.
+      browser.ts selects this element and attaches the submit handler.
+    -->
+    <form
+      data-preview-form
+      id="preview-form"
+      aria-labelledby="preview-heading"
+      novalidate
+    >
+      <h2 id="preview-heading">Preview invoice</h2>
+
+      <div class="form-grid">
+        <label for="input-customerId">
+          Customer ID
+          <input
+            id="input-customerId"
+            name="customerId"
+            type="number"
+            min="1"
+            step="1"
+            placeholder="e.g. 1"
+            required
+          >
+        </label>
+
+        <label for="input-productCode">
+          Product code
+          <input
+            id="input-productCode"
+            name="productCode"
+            type="text"
+            value="PAPER-A4"
+            placeholder="e.g. PAPER-A4"
+            required
+          >
+        </label>
+
+        <label for="input-qty">
+          Quantity
+          <input
+            id="input-qty"
+            name="qty"
+            type="number"
+            min="1"
+            step="1"
+            value="100"
+            aria-describedby="qty-hint"
+            required
+          >
+          <span id="qty-hint" class="hint">
+            qty ≥ 100 triggers the 2% bulk discount (inclusive, preview path).
+          </span>
+        </label>
+
+        <label for="input-unitPrice">
+          Unit price (SGD)
+          <input
+            id="input-unitPrice"
+            name="unitPrice"
+            type="number"
+            min="0.0001"
+            step="0.0001"
+            value="10.00"
+            required
+          >
+        </label>
+      </div>
+
+      <div class="actions">
+        <button
+          type="submit"
+          data-preview-submit
+          aria-controls="preview-result"
+        >
+          Preview invoice
+        </button>
+      </div>
+
+      <!-- Result region -->
+      <div
+        id="preview-result"
+        class="paper"
+        aria-live="polite"
+        aria-atomic="true"
+      >
+        <div class="paper-label">INVOICE PREVIEW</div>
+
+        <!-- [data-preview-customer-name] — customer name resolved by the server -->
+        <p
+          data-preview-customer-name
+          id="preview-customer-name"
+          class="preview-status"
+        ></p>
+
+        <!-- [data-preview-total] — bare total amount (no currency prefix) -->
+        <div class="paper-total">
+          Total <span class="currency-label">SGD</span>
+          <strong
+            data-preview-total
+            id="preview-total"
+          >0.00</strong>
+        </div>
+
+        <!--
+          [data-preview-error] — validation or network error text.
+          Hidden until an error occurs. Contains only safe sanitised text.
+        -->
+        <p
+          data-preview-error
+          id="preview-error"
+          class="preview-error"
+          role="alert"
+          hidden
+        ></p>
+      </div>
+    </form>
+  </div>
+</main>
+
+<script type="module" src="/browser.js"></script>
+</body>
+</html>

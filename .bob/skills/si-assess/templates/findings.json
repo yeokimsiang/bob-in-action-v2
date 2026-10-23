@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "run_id": "{{run_id}}",
+  "source_revision": "{{source_revision}}",
+  "evidence_ids": ["EV-001", "EV-002"],
+  "findings": [
+    {
+      "id": "F-001",
+      "title": "Synthetic version-advisory example; replace with an inspected finding",
+      "category": "obsolete_dependency",
+      "impact": "Potential support and security exposure remains under investigation; no production impact is established.",
+      "evidence_ids": ["EV-001"],
+      "severity": "unknown",
+      "rationale": "Affectedness and executed path are not established in this training example.",
+      "security_status": "under_investigation",
+      "status_evidence_ids": [],
+      "remediation_options": ["Inspect affected component and runtime path before selecting remediation."],
+      "decision_owner": "Client security owner (pending)"
+    }
+  ],
+  "evidence_dispositions": [
+    {
+      "evidence_id": "EV-001",
+      "disposition": "mapped",
+      "finding_ids": ["F-001"],
+      "owner": null,
+      "reason": null
+    },
+    {
+      "evidence_id": "EV-002",
+      "disposition": "deferred",
+      "finding_ids": [],
+      "owner": "Client technical owner (pending)",
+      "reason": "Synthetic example evidence requires runtime confirmation before assessment."
+    }
+  ]
+}

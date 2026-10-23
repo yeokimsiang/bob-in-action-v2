@@ -1,0 +1,10 @@
+CREATE TABLE customers (id INTEGER NOT NULL, name VARCHAR(120) NOT NULL, tier CHAR(1) NOT NULL, email VARCHAR(200) NOT NULL);
+CREATE TABLE products (code VARCHAR(40) NOT NULL, description VARCHAR(200) NOT NULL, unit_price NUMERIC(14,4) NOT NULL, category VARCHAR(80) NOT NULL);
+CREATE INDEX customers_tier_idx ON customers (tier);
+CREATE INDEX products_category_idx ON products (category);
+INSERT INTO customers (id, name, tier, email) VALUES (1, 'Aster Office Supplies', 'A', 'orders@aster.example');
+INSERT INTO customers (id, name, tier, email) VALUES (2, 'Merlion Retail', 'B', 'finance@merlion.example');
+INSERT INTO customers (id, name, tier, email) VALUES (3, 'Straits Workshop', 'C', 'accounts@straits.example');
+INSERT INTO products (code, description, unit_price, category) VALUES ('CABLE-USB', 'USB cable pack', 3.3350, 'Accessories');
+INSERT INTO products (code, description, unit_price, category) VALUES ('PAPER-A4', 'A4 paper carton', 10.0000, 'Office');
+INSERT INTO products (code, description, unit_price, category) VALUES ('TONER-BK', 'Black toner cartridge', 50.0000, 'Print');

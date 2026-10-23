@@ -1,0 +1,284 @@
+{
+  "schema": "si-mock-timesheets/v1",
+  "synthetic": true,
+  "label": "Synthetic demonstration timesheets for the Java invoice-preview pilot; not real time records.",
+  "pilot": {
+    "name": "Java invoice-preview pilot (synthetic)",
+    "planned": [
+      {
+        "work_package": "PILOT-WP-01",
+        "description": "Pilot set-up: toolchain, build pipeline and baseline test run",
+        "planned_hours": "40"
+      },
+      {
+        "work_package": "PILOT-WP-02",
+        "description": "Upgrade of the invoice-preview module and its unit tests",
+        "planned_hours": "64"
+      },
+      {
+        "work_package": "PILOT-WP-03",
+        "description": "Regression run and browser checks of the invoice preview",
+        "planned_hours": "32"
+      },
+      {
+        "work_package": "PILOT-WP-04",
+        "description": "Rollback rehearsal and pilot close-out",
+        "planned_hours": "16"
+      }
+    ]
+  },
+  "entries": [
+    {
+      "entry_id": "TS-0001",
+      "person": "Synthetic Engineer 03",
+      "role": "Migration engineer",
+      "work_package": "PILOT-WP-01",
+      "date": "2026-09-07",
+      "hours": "7.5",
+      "activity": "Toolchain installation and build baseline"
+    },
+    {
+      "entry_id": "TS-0002",
+      "person": "Synthetic Engineer 01",
+      "role": "Solution architect",
+      "work_package": "PILOT-WP-01",
+      "date": "2026-09-07",
+      "hours": "4.0",
+      "activity": "Pilot scope walkthrough with the delivery team"
+    },
+    {
+      "entry_id": "TS-0003",
+      "person": "Synthetic Engineer 03",
+      "role": "Migration engineer",
+      "work_package": "PILOT-WP-01",
+      "date": "2026-09-08",
+      "hours": "7.5",
+      "activity": "Baseline test run and results capture"
+    },
+    {
+      "entry_id": "TS-0004",
+      "person": "Synthetic Engineer 07",
+      "role": "Migration engineer",
+      "work_package": "PILOT-WP-01",
+      "date": "2026-09-08",
+      "hours": "6.0",
+      "activity": "Workstation and repository set-up"
+    },
+    {
+      "entry_id": "TS-0005",
+      "person": "Synthetic Engineer 03",
+      "role": "Migration engineer",
+      "work_package": "PILOT-WP-01",
+      "date": "2026-09-09",
+      "hours": "7.5",
+      "activity": "Build pipeline configuration for the pilot branch"
+    },
+    {
+      "entry_id": "TS-0006",
+      "person": "Synthetic Engineer 07",
+      "role": "Migration engineer",
+      "work_package": "PILOT-WP-01",
+      "date": "2026-09-09",
+      "hours": "6.0",
+      "activity": "Build pipeline configuration for the pilot branch"
+    },
+    {
+      "entry_id": "TS-0007",
+      "person": "Synthetic Engineer 01",
+      "role": "Solution architect",
+      "work_package": "PILOT-WP-01",
+      "date": "2026-09-09",
+      "hours": "4.0",
+      "activity": "Pilot approach review"
+    },
+    {
+      "entry_id": "TS-0008",
+      "person": "Synthetic Engineer 03",
+      "role": "Migration engineer",
+      "work_package": "PILOT-WP-02",
+      "date": "2026-09-10",
+      "hours": "7.5",
+      "activity": "Module upgrade work"
+    },
+    {
+      "entry_id": "TS-0009",
+      "person": "Synthetic Engineer 07",
+      "role": "Migration engineer",
+      "work_package": "PILOT-WP-02",
+      "date": "2026-09-10",
+      "hours": "7.5",
+      "activity": "Module upgrade work"
+    },
+    {
+      "entry_id": "TS-0010",
+      "person": "Synthetic Engineer 03",
+      "role": "Migration engineer",
+      "work_package": "PILOT-WP-02",
+      "date": "2026-09-11",
+      "hours": "7.5",
+      "activity": "Module upgrade work"
+    },
+    {
+      "entry_id": "TS-0011",
+      "person": "Synthetic Engineer 07",
+      "role": "Migration engineer",
+      "work_package": "PILOT-WP-02",
+      "date": "2026-09-11",
+      "hours": "7.5",
+      "activity": "Module upgrade work"
+    },
+    {
+      "entry_id": "TS-0012",
+      "person": "Synthetic Engineer 01",
+      "role": "Solution architect",
+      "work_package": "PILOT-WP-02",
+      "date": "2026-09-11",
+      "hours": "3.0",
+      "activity": "Design review of upgrade changes"
+    },
+    {
+      "entry_id": "TS-0013",
+      "person": "Synthetic Engineer 03",
+      "role": "Migration engineer",
+      "work_package": "PILOT-WP-02",
+      "date": "2026-09-14",
+      "hours": "7.5",
+      "activity": "Module upgrade work"
+    },
+    {
+      "entry_id": "TS-0014",
+      "person": "Synthetic Engineer 05",
+      "role": "Migration engineer",
+      "work_package": "PILOT-WP-02",
+      "date": "2026-09-14",
+      "hours": "7.5",
+      "activity": "Paired code review"
+    },
+    {
+      "entry_id": "TS-0015",
+      "person": "Synthetic Engineer 07",
+      "role": "Migration engineer",
+      "work_package": "PILOT-WP-02",
+      "date": "2026-09-14",
+      "hours": "7.5",
+      "activity": "Module upgrade work"
+    },
+    {
+      "entry_id": "TS-0016",
+      "person": "Synthetic Engineer 03",
+      "role": "Migration engineer",
+      "work_package": "PILOT-WP-02",
+      "date": "2026-09-15",
+      "hours": "7.0",
+      "activity": "Unit test updates"
+    },
+    {
+      "entry_id": "TS-0017",
+      "person": "Synthetic Engineer 05",
+      "role": "Migration engineer",
+      "work_package": "PILOT-WP-02",
+      "date": "2026-09-15",
+      "hours": "6.0",
+      "activity": "Unit test updates"
+    },
+    {
+      "entry_id": "TS-0018",
+      "person": "Synthetic Engineer 01",
+      "role": "Solution architect",
+      "work_package": "PILOT-WP-02",
+      "date": "2026-09-15",
+      "hours": "3.5",
+      "activity": "Design review of upgrade changes"
+    },
+    {
+      "entry_id": "TS-0019",
+      "person": "Synthetic Engineer 10",
+      "role": "Migration engineer",
+      "work_package": "PILOT-WP-03",
+      "date": "2026-09-16",
+      "hours": "7.5",
+      "activity": "Regression suite run"
+    },
+    {
+      "entry_id": "TS-0020",
+      "person": "Synthetic Engineer 11",
+      "role": "Migration engineer",
+      "work_package": "PILOT-WP-03",
+      "date": "2026-09-16",
+      "hours": "7.5",
+      "activity": "Browser checks of the invoice preview"
+    },
+    {
+      "entry_id": "TS-0021",
+      "person": "Synthetic Engineer 10",
+      "role": "Migration engineer",
+      "work_package": "PILOT-WP-03",
+      "date": "2026-09-17",
+      "hours": "7.5",
+      "activity": "Regression suite run"
+    },
+    {
+      "entry_id": "TS-0022",
+      "person": "Synthetic Engineer 03",
+      "role": "Migration engineer",
+      "work_package": "PILOT-WP-03",
+      "date": "2026-09-17",
+      "hours": "4.0",
+      "activity": "Follow-up changes from verification"
+    },
+    {
+      "entry_id": "TS-0023",
+      "person": "Synthetic Engineer 11",
+      "role": "Migration engineer",
+      "work_package": "PILOT-WP-03",
+      "date": "2026-09-17",
+      "hours": "6.0",
+      "activity": "Browser checks of the invoice preview"
+    },
+    {
+      "entry_id": "TS-0024",
+      "person": "Synthetic Engineer 01",
+      "role": "Solution architect",
+      "work_package": "PILOT-WP-03",
+      "date": "2026-09-18",
+      "hours": "2.0",
+      "activity": "Verification sign-off review"
+    },
+    {
+      "entry_id": "TS-0025",
+      "person": "Synthetic Engineer 05",
+      "role": "Migration engineer",
+      "work_package": "PILOT-WP-04",
+      "date": "2026-09-18",
+      "hours": "6.0",
+      "activity": "Rollback rehearsal"
+    },
+    {
+      "entry_id": "TS-0026",
+      "person": "Synthetic Engineer 07",
+      "role": "Migration engineer",
+      "work_package": "PILOT-WP-04",
+      "date": "2026-09-18",
+      "hours": "6.0",
+      "activity": "Rollback rehearsal"
+    },
+    {
+      "entry_id": "TS-0027",
+      "person": "Synthetic Engineer 12",
+      "role": "Solution architect",
+      "work_package": "PILOT-WP-04",
+      "date": "2026-09-21",
+      "hours": "3.0",
+      "activity": "Pilot close-out notes"
+    },
+    {
+      "entry_id": "TS-0028",
+      "person": "Synthetic Engineer 01",
+      "role": "Solution architect",
+      "work_package": "PILOT-WP-04",
+      "date": "2026-09-21",
+      "hours": "2.5",
+      "activity": "Pilot close-out review"
+    }
+  ]
+}

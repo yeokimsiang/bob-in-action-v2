@@ -1,0 +1,3 @@
+SYNTHETIC DEMONSTRATION SOURCE — not a customer record.
+Assume one application boundary for estate assessment and migration preparation.
+No measured effort, approval or customer commitment is represented here.

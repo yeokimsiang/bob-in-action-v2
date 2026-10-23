@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "run_id": "{{run_name}}",
+  "candidate_revision": "{{candidate_revision_or_working-tree}}",
+  "verdict": "fail",
+  "findings": [
+    {
+      "id": "{{stable_finding_id}}",
+      "severity": "P1",
+      "title": "{{short_title}}",
+      "evidence": "{{specific_file_or_observation}}",
+      "required_action": "{{bounded_correction}}"
+    }
+  ]
+}

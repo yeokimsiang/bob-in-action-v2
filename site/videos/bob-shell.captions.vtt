@@ -1,0 +1,92 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:04.711
+An illustrative walkthrough of IBM Bob Shell running the
+kit headless: probed, but no stage was run end to end.
+
+2
+00:00:04.711 --> 00:00:06.960
+Checker results are real; grey bars cover run values.
+
+3
+00:00:07.000 --> 00:00:10.868
+A customer asks what it will take to modernise
+their legacy app, and what it will cost.
+
+4
+00:00:10.868 --> 00:00:13.848
+Four Bob runs turn their code into
+the documents an SI prices from.
+
+5
+00:00:13.848 --> 00:00:16.960
+We'll follow one bug from the code
+all the way to a line in the price.
+
+6
+00:00:17.000 --> 00:00:25.960
+Each bob run starts Bob in one persona mode, does
+one stage, then stops. You check it before the next.
+
+7
+00:00:26.000 --> 00:00:34.850
+First, set up once: open the kit in IBM Bob, trust the
+folder, check Python and Bob Shell, and set your API key.
+
+8
+00:00:49.660 --> 00:00:54.035
+Bob Shell is IBM Bob in your terminal: the bob command.
+
+9
+00:00:54.035 --> 00:01:00.000
+Check you have Python 3.11 or later for
+the checkers, and that bob answers.
+
+10
+00:01:06.421 --> 00:01:11.134
+Discover. You choose a run name,
+acme-1 here, and Bob records evidence:
+
+11
+00:01:11.134 --> 00:01:15.780
+a file and line for what it read, or
+a named gap for what it couldn't.
+
+12
+00:02:29.805 --> 00:02:34.021
+Assess. Bob turns the evidence into
+findings and an assessment report.
+
+13
+00:02:34.021 --> 00:02:39.080
+Because he can't ask you mid-run, you say
+in the prompt that the last checks passed.
+
+14
+00:03:18.593 --> 00:03:26.093
+Plan. Bob orders the work into packages
+and staffs them from the roster.
+
+15
+00:04:03.694 --> 00:04:12.611
+Price. Bob writes effort rows and a draft
+statement of work. Your own tools do the money.
+
+16
+00:05:26.939 --> 00:05:29.980
+That's the draft pack, ready for senior review.
+
+17
+00:05:51.581 --> 00:05:55.573
+One line of code, traced to one line of the price.
+
+18
+00:05:55.573 --> 00:06:02.041
+When the customer asks why the SOW includes
+this fix, you can show them the line.
+
+19
+00:06:02.081 --> 00:06:12.060
+To try it: one bob run per stage, a checker after each.
+Try one stage first: no full stage has been run this way.

@@ -1,0 +1,273 @@
+{
+  "schemaVersion": "1.0",
+  "title": "Migration assessment pack release rubric",
+  "appliesTo": "Synthetic legacy-app Bob assessment and one Java invoice-preview pilot",
+  "evidencePolicy": "Score the actual artifact versions and recorded checks. Public methods guide structure but do not validate demo claims. Unknown client facts may be disclosed with an owner and validation action; they may not be fabricated.",
+  "requiredPack": [
+    "one consolidated assessment",
+    "target-specific annexes",
+    "editable effort CSV model",
+    "dependency-aware implementation plan",
+    "nonbinding unpriced draft SOW",
+    "validation and provenance ledger"
+  ],
+  "qualityGatesMayBeWeakened": false,
+  "scoreType": "ordinal; do not sum, average, or report a percentage",
+  "allowedScores": ["NR", "0", "1", "2"],
+  "scoreMeaning": {
+    "NR": "Not reviewed or check not run; never a pass",
+    "0": "Missing, contradicted, or unsupported",
+    "1": "Present but materially incomplete or weakly evidenced",
+    "2": "Complete for the declared scope, traceable to evidence, and candid about unresolved inputs"
+  },
+  "blockingFailures": [
+    {
+      "id": "B01",
+      "name": "fabricated_evidence_or_approval",
+      "trigger": "Any invented command result, runtime observation, stakeholder statement, signature, acceptance, consent, or institutional endorsement",
+      "repair": "Remove or relabel the claim, restore actual evidence and pending approval state, then rerun affected review"
+    },
+    {
+      "id": "B02",
+      "name": "wrong_money",
+      "trigger": "Currency amount without an authorized rate basis, currency/tax treatment, or correct arithmetic; or Bobcoin spend presented as SI labor price",
+      "repair": "Mark unpriced or recompute from documented approved inputs and reconcile every total"
+    },
+    {
+      "id": "B03",
+      "name": "unjustified_dead_code",
+      "trigger": "Code called dead or safe to remove solely from inspected static references without checking routes, reflection, configuration, generated use, tests, and residual uncertainty",
+      "repair": "Narrow the claim to inspected paths or provide additional checks and owner/runtime validation"
+    },
+    {
+      "id": "B04",
+      "name": "false_cve_reachability",
+      "trigger": "CVE/version match treated as confirmed exploitable, unreachable, fixed, or clean without component, affectedness, execution-path, and test or scan evidence",
+      "repair": "Record scan scope and exact status justification; otherwise classify under investigation"
+    },
+    {
+      "id": "B05",
+      "name": "nontraceable_estimate_or_schedule",
+      "trigger": "Material effort, duration, savings, or milestone claim lacks WBS/role basis, calculation, assumption, predecessor, or evidence pointer",
+      "repair": "Rebuild and reconcile the model and dependent plan, or remove the unsupported number"
+    },
+    {
+      "id": "B06",
+      "name": "pilot_scope_confusion",
+      "trigger": "One Java preview pilot is represented as full migration, production deployment, security clearance, validated savings, or implementation of other target cases",
+      "repair": "Separate observed pilot facts from future forecast and narrow acceptance to executed checks"
+    },
+    {
+      "id": "B07",
+      "name": "reference_or_secret_leakage",
+      "trigger": "IDEAL or held-out answer material is supplied to Bob, native provenance is obscured, or a secret appears in the pack or prompt evidence",
+      "repair": "Stop release, remove exposed material from output, preserve an incident record, and rerun clean provenance checks"
+    },
+    {
+      "id": "B08",
+      "name": "overwritten_original_or_unverified_correction",
+      "trigger": "Original native Bob output is lost, or a material correction is released without rerunning its affected check",
+      "repair": "Restore original from native run evidence, version the correction, and record new checks"
+    },
+    {
+      "id": "B09",
+      "name": "unresolved_template_or_internal_scaffold",
+      "trigger": "A released client/SI draft contains unresolved template fields, synthetic example rows presented as findings, or internal authoring instructions presented as report content",
+      "repair": "Replace the scaffold with evidence-linked Bob-authored content, retain the rejected version, and rerun completeness and semantic review"
+    },
+    {
+      "id": "B10",
+      "name": "cross_artifact_identity_drift",
+      "trigger": "A finding, WBS, deliverable, artifact, source revision or target profile changes meaning or disappears across the assessment, annexes, CSV, plan, SOW and ledger",
+      "repair": "Reconcile the authoritative identifiers and meanings, version each affected artifact, and rerun traceability, arithmetic and dependency checks"
+    },
+    {
+      "id": "B11",
+      "name": "bob_price_arithmetic",
+      "trigger": "A Bob-authored report states a currency amount, a rate-times-hours product, a risk-allowance amount or any other price figure instead of referencing the SI commercial engine's illustrative table labelled not a quote",
+      "repair": "Remove the figure from Bob's prose, reference the engine-calculated illustrative table, and rerun the price cross-check with check_effort_numbers.py"
+    },
+    {
+      "id": "B12",
+      "name": "ticket_as_sole_proof",
+      "trigger": "A finding, severity or recommendation rests only on synthetic help-desk ticket or incident records, or a ticket is presented as a diagnosis rather than a user report",
+      "repair": "Bind the claim to inspected source or other primary evidence and cite the ticket only as corroboration, or downgrade the claim to an open question with an owner"
+    },
+    {
+      "id": "B13",
+      "name": "unmeasured_complexity_or_calibrated_velocity_claim",
+      "trigger": "Complexity is presented as measured by Bob, SI-measured metrics are presented without the SI-measured, Bob-scored label, or delivery velocity is presented as calibrated without measured pilot actuals",
+      "repair": "Relabel metrics as SI-measured, Bob-scored, cite the metrics input, restore the statement velocity not calibrated, and rerun affected effort and plan checks"
+    }
+  ],
+  "criteria": [
+    {
+      "id": "Q01",
+      "field": "decision",
+      "score0": "No clear recommendation or a recommendation contradicted by findings",
+      "score1": "Recommendation exists but decision owner, blocker, or reversal condition is absent",
+      "score2": "Page-one recommendation, reason, pending decision owner, blockers, and evidence that could change it link to findings"
+    },
+    {
+      "id": "Q02",
+      "field": "scope_and_origin",
+      "score0": "Synthetic status, source revision, or Bob versus Codex authorship is false or absent",
+      "score1": "Origins or exclusions stated but versions, run IDs, or pilot boundary are incomplete",
+      "score2": "BASE, IDEAL, MIGRATION, COMPARISON, version, date, run IDs, scope, and exclusions are distinguishable and traceable"
+    },
+    {
+      "id": "Q03",
+      "field": "current_state",
+      "score0": "Architecture and inventory asserted without evidence",
+      "score1": "Build/runtime, data, interfaces, or target constraints only partly inspected",
+      "score2": "Observed build/config/data/interface facts cite paths or runs; unverified topology and target constraints are explicit"
+    },
+    {
+      "id": "Q04",
+      "field": "operations_and_dependencies",
+      "score0": "Static references presented as complete runtime behavior",
+      "score1": "Dependencies listed but missing evidence class, operational gaps, or validation owner",
+      "score2": "Each material dependency distinguishes source inference from runtime evidence; batch, volume, SLA, backup/DR, owner gaps have actions"
+    },
+    {
+      "id": "Q05",
+      "field": "security",
+      "score0": "Unsupported safety/exploitability claim or hidden scan gap",
+      "score1": "Findings listed but scan scope, CVE status, or remediation evidence incomplete",
+      "score2": "Code/config, scan, affectedness, reachability and remediation claims separated; exact evidence or visible unperformed checks"
+    },
+    {
+      "id": "Q06",
+      "field": "options_and_tradeoffs",
+      "score0": "Target choice asserted without driver or alternatives",
+      "score1": "Alternatives named but effort, disruption, risk, or decision trigger absent",
+      "score2": "Retain/contain, bounded migration, and deeper modernization compared against drivers, disruption, evidence, and open decisions"
+    },
+    {
+      "id": "Q07",
+      "field": "pilot",
+      "score0": "Pilot outcome absent, invented, or described as completed migration",
+      "score1": "Pilot change recorded but missing revision, executed result, before/after behavior, failure, or boundary",
+      "score2": "One Java preview objective, changed files, exact runs, observed behavior, rollback status, and untested scope documented"
+    },
+    {
+      "id": "Q08",
+      "field": "effort_csv",
+      "score0": "No editable WBS model or totals cannot be reconciled",
+      "score1": "Role/task range exists but quantity, basis, uncertainty, status, or arithmetic is incomplete",
+      "score2": "Versioned WBS/role low-central-high scenarios reconcile and separate actual pilot, assessment, forecast, and unpriced money"
+    },
+    {
+      "id": "Q09",
+      "field": "implementation_plan",
+      "score0": "Unlinked dates or plan claims completion beyond observed scope",
+      "score1": "Tasks listed but resource, predecessor, duration basis, or exit evidence missing",
+      "score2": "WBS links, roles, predecessors, client dependencies, duration basis, gates, and acceptance evidence align with estimate; delay test passes"
+    },
+    {
+      "id": "Q10",
+      "field": "draft_sow",
+      "score0": "Binding, priced, approved, or missing objective deliverable acceptance",
+      "score1": "Draft status clear but reviewer, evidence, responsibility, exclusion, or correction cycle incomplete",
+      "score2": "Nonbinding unpriced draft has aligned deliverable IDs, measurable acceptance, pending reviewer, client inputs, exclusions, and change trigger"
+    },
+    {
+      "id": "Q11",
+      "field": "traceability_and_provenance",
+      "score0": "Headline claims cannot be located in evidence or native Bob evidence lost",
+      "score1": "Ledger exists but material claims, versions, or independent checks have gaps",
+      "score2": "Findings, recommendation, annex, CSV, plan, SOW, Bob runs and independent checks form a navigable chain with originals preserved"
+    },
+    {
+      "id": "Q12",
+      "field": "adversarial_review",
+      "score0": "No challenge record or material discrepancy ignored",
+      "score1": "Challenges recorded but corrections or affected reruns missing",
+      "score2": "Reviewer challenged claims, money, dependencies, security, pilot and leakage; material fixes versioned and affected checks rerun"
+    },
+    {
+      "id": "Q13",
+      "field": "legacy_code_health",
+      "score0": "Generic debt score or quality label replaces inspected poor-practice findings",
+      "score1": "Some documentation, coupling, dead-code, duplication, testability, error/data, dependency or operations categories are omitted or weakly linked to impact",
+      "score2": "Every inspected legacy-health category has evidence-linked findings or an explicit scoped gap, with business/operational impact and a bounded treatment decision"
+    },
+    {
+      "id": "Q14",
+      "field": "target_annex_completeness",
+      "score0": "One or more of the seven target profiles is absent or represented as implemented without evidence",
+      "score1": "All targets are named but impacted components, alternatives, compatibility, invariants, feasibility, rollback, effort or owner decisions are incomplete",
+      "score2": "All seven annexes consistently link findings and cover options, impacted components, compatibility, behavior, evidence scope, delivery/rollback, WBS uncertainty and pending decisions"
+    },
+    {
+      "id": "Q15",
+      "field": "delivery_operating_model",
+      "score0": "Plan lacks accountable roles, review gates or traceable delivery records",
+      "score1": "Roles or Git/ticket/wiki checkpoints exist but sign-offs, evidence locations, cadence or simulation limits are unclear",
+      "score2": "WBS work maps to distinct implementation/review/QA/PM responsibilities, Git and ticket/wiki evidence, gates, escalation and candid synthetic/authentication limits"
+    },
+    {
+      "id": "Q16",
+      "field": "discovery_depth",
+      "score0": "Discovery records only component-level edges and no documentation state per component",
+      "score1": "Some documentation notes or method-level call edges exist but components are missing or pointers lack exact file and line",
+      "score2": "Every inspected code component has a documentation note and material method-level call edges cite exact file:line pointers that pass the normalize_evidence.py source check"
+    },
+    {
+      "id": "Q17",
+      "field": "tech_debt_scoring",
+      "score0": "Technical debt is a narrative or unexplained score, or complexity is presented as measured by Bob",
+      "score1": "Debt is scored but the rubric, the SI-measured metrics input or the SI-measured, Bob-scored label is missing for some components",
+      "score2": "Each component's debt score follows a stated rubric, cites the SI-measured metrics input and the linked findings, and is labelled SI-measured, Bob-scored"
+    },
+    {
+      "id": "Q18",
+      "field": "modernisation_option_scoring",
+      "score0": "Options are asserted without a named path framework or stated scoring criteria",
+      "score1": "A framework or criteria exist but retire, retain, rehost, relocate, repurchase, replatform or refactor is unassessed, or business criticality is absent",
+      "score2": "Every component is classified against all seven paths with reasons for rejected paths, and options are scored on stated criteria including business criticality, effort and risk"
+    },
+    {
+      "id": "Q19",
+      "field": "operational_history_corroboration",
+      "score0": "Ticket or incident records are ignored without explanation, or used as sole proof of a finding",
+      "score1": "Tickets are cited but code relevance, the user-report nature or the primary evidence beside them is unclear",
+      "score2": "Ticket and incident records are classified as code-relevant or not, cited only as corroboration beside primary evidence, and security wording states a source-reading review, no scanner"
+    },
+    {
+      "id": "Q20",
+      "field": "staffing_and_calibration",
+      "score0": "No per-module work packages, no staffing or a calibrated-velocity claim",
+      "score1": "Per-module effort or roster staffing exists but skills, named synthetic people, skills gaps or the calibration protocol are incomplete",
+      "score2": "Each work package has a component column, required skills, named synthetic roster people with gaps flagged, and a pilot velocity calibration protocol that keeps velocity not calibrated"
+    },
+    {
+      "id": "Q21",
+      "field": "commercial_roles_and_illustrative_price",
+      "score0": "Bob states price figures, or effort roles cannot be traced to the rate card",
+      "score1": "Rate-card roles or risk drivers are named but some effort roles are unmapped, or the illustrative table, not-a-quote label or numeric cross-check is missing",
+      "score2": "Every effort role maps to a rate-card role or states that no rate exists, risk drivers are chosen without arithmetic, and the SOW references the engine's illustrative table as not a quote with check_effort_numbers.py cross-checking every figure"
+    }
+  ],
+  "reviewRecordFields": [
+    "packVersion",
+    "reviewer",
+    "reviewedAt",
+    "criterionScoresById",
+    "evidencePointersByCriterionId",
+    "blockingFailureIds",
+    "findingIds",
+    "correctionVersions",
+    "rerunEvidencePointers",
+    "releaseDecision"
+  ],
+  "releaseGate": {
+    "requiredPackItemsPresent": true,
+    "requiredScoreForEveryCriterion": "2",
+    "maximumOpenBlockingFailures": 0,
+    "correctionsRequireAffectedRerunEvidence": true,
+    "permittedReleaseLabel": "client/SI review draft",
+    "humanAcceptanceState": "pending"
+  },
+  "releaseRule": "Release as client/SI review draft only when all required pack items exist, every Q criterion scores 2, no B failure remains, and affected checks after corrections have recorded evidence. NR, 0, or 1 means revise; this is an ordinal gate, not a percentage grade. Human approval remains pending."
+}

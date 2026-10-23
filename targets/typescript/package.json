@@ -1,0 +1,14 @@
+{
+  "name": "@ingramtrials/invoice-preview-panel",
+  "version": "1.0.0",
+  "description": "TypeScript invoice-preview client boundary — bounded pilot, not a full migration",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "tsc -p tsconfig.json && node dist/preview.test.js"
+  },
+  "devDependencies": {
+    "typescript": "7.0.2"
+  }
+}

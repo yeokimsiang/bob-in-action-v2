@@ -1,0 +1,11 @@
+{
+  "schema": "si-mock-mcp-datasets/v1",
+  "synthetic": true,
+  "hashRule": "SHA-256 of the exact committed bytes (LF line endings); servers refuse to start on mismatch",
+  "datasets": {
+    "roster": {"path": "tools/mcp/data/roster.json", "sha256": "6113f140b0e346ecab7ae1c966d75a17935abbe371ef5648543f78ec94b35157", "server": "roster"},
+    "tickets": {"path": "tools/mcp/data/tickets.json", "sha256": "87640ad0a28629f19b132b0842d80b10474d7f45fe552c3bdf39c8dfe4a53b65", "server": "tickets"},
+    "timesheets": {"path": "tools/mcp/data/timesheets.json", "sha256": "667b8bde986a6e4c6c4fe772b222b0cec87739cde7ba38d7d74ad0e7f7eb03f1", "server": "timesheets"},
+    "ratecard_engine": {"path": "tools/commercial/server.py", "sha256": "3d14acbc32e5b203f60936576ecb83c86b172fe5a3ffe866fcd4bf15be469d89", "server": "ratecard", "readOnlyImport": ["validate", "SEEDS"]}
+  }
+}

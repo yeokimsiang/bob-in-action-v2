@@ -1,0 +1,2 @@
+deliverable_id,wbs_id,task_name,role,quantity,unit,low_hours,central_hours,high_hours,method,evidence_or_comparable,uncertainty_driver,included,status,notes
+DEL-001,WBS-1.1,Synthetic template example,SI architect,1,bounded component,2,4,8,Synthetic assumption not measured effort,ASSUMPTION-001,Client input pending,included,assessment-forecast,Unpriced template only; call the formatter after replacing rows

@@ -1,0 +1,276 @@
+{
+  "schema": "si-mock-tickets/v1",
+  "synthetic": true,
+  "notice": "Synthetic historical help-desk tickets and incidents for the Ingram Trials invoice desk. Written as user reports from the user-facing screens and route list only, without reading BASE/docs or any v1 assessment finding. Not real people, customers or events. Resolution notes record help-desk actions, never code diagnoses. Seven tickets were removed (never rewritten) after an independent critic classified them as moderately or weakly resembling v1 findings; see TOOLS/mock-mcp/ticket-finding-overlap.json.",
+  "categories": {
+    "access_request": {
+      "codeRelated": false
+    },
+    "password_reset": {
+      "codeRelated": false
+    },
+    "training_question": {
+      "codeRelated": false
+    },
+    "report_formatting": {
+      "codeRelated": false
+    },
+    "printer_network": {
+      "codeRelated": false
+    },
+    "holiday_schedule": {
+      "codeRelated": false
+    },
+    "new_product_setup": {
+      "codeRelated": false
+    },
+    "data_correction": {
+      "codeRelated": false
+    },
+    "hardware": {
+      "codeRelated": false
+    },
+    "feature_request": {
+      "codeRelated": false
+    },
+    "application_behaviour": {
+      "codeRelated": true
+    }
+  },
+  "records": [
+    {
+      "id": "DESK-1001",
+      "type": "ticket",
+      "reported_on": "2025-11-03",
+      "reporter_role": "Accounts receivable clerk",
+      "channel": "email",
+      "category": "access_request",
+      "status": "closed",
+      "title": "New starter needs invoice desk access",
+      "description": "A new team member joins on Monday and needs to prepare invoices and view invoice history. Please set up the same access as the rest of the billing team.",
+      "resolution_note": "Access granted after team lead confirmation.",
+      "synthetic": true
+    },
+    {
+      "id": "DESK-1003",
+      "type": "incident",
+      "reported_on": "2025-11-14",
+      "reporter_role": "Operations analyst",
+      "channel": "phone",
+      "category": "printer_network",
+      "status": "resolved",
+      "title": "Second-floor printer offline, cannot print invoice copies",
+      "description": "The billing printer on level 2 shows offline for everyone. We need paper copies for a customer collecting today.",
+      "resolution_note": "Facilities restarted the print server; queue cleared.",
+      "synthetic": true
+    },
+    {
+      "id": "DESK-1004",
+      "type": "ticket",
+      "reported_on": "2025-11-21",
+      "reporter_role": "Accounts receivable clerk",
+      "channel": "portal",
+      "category": "training_question",
+      "status": "closed",
+      "title": "How do I remove a line before saving?",
+      "description": "I added the wrong product to an invoice I was preparing. How do I take that line off without starting again?",
+      "resolution_note": "Walked the user through the draft lines table.",
+      "synthetic": true
+    },
+    {
+      "id": "DESK-1005",
+      "type": "ticket",
+      "reported_on": "2025-12-01",
+      "reporter_role": "Credit controller",
+      "channel": "email",
+      "category": "password_reset",
+      "status": "closed",
+      "title": "Locked out after holiday leave",
+      "description": "I was away for three weeks and now my login is locked. Please unlock it.",
+      "resolution_note": "Directory account unlocked; user reset password.",
+      "synthetic": true
+    },
+    {
+      "id": "DESK-1007",
+      "type": "ticket",
+      "reported_on": "2025-12-15",
+      "reporter_role": "Product data coordinator",
+      "channel": "email",
+      "category": "new_product_setup",
+      "status": "closed",
+      "title": "New docking station range missing from product list",
+      "description": "Sales have started selling the new docking station range but the products do not appear in the product dropdown when preparing an invoice.",
+      "resolution_note": "Product master update requested from the catalogue team; products visible next day.",
+      "synthetic": true
+    },
+    {
+      "id": "DESK-1008",
+      "type": "ticket",
+      "reported_on": "2026-01-06",
+      "reporter_role": "Accounts receivable clerk",
+      "channel": "phone",
+      "category": "application_behaviour",
+      "status": "closed",
+      "title": "Desk felt very slow first thing after the new year",
+      "description": "Opening invoice history took a long time this morning and the page seemed to hang for a while before the list appeared. It was fine again by lunch.",
+      "resolution_note": "Could not reproduce later in the day. Passed to the application team for awareness; no cause recorded.",
+      "synthetic": true
+    },
+    {
+      "id": "DESK-1009",
+      "type": "ticket",
+      "reported_on": "2026-01-12",
+      "reporter_role": "Finance team lead",
+      "channel": "portal",
+      "category": "access_request",
+      "status": "closed",
+      "title": "Remove access for leaver",
+      "description": "A contractor finished on Friday. Please remove their invoice desk and shared drive access.",
+      "resolution_note": "Access removed and confirmed to requester.",
+      "synthetic": true
+    },
+    {
+      "id": "DESK-1011",
+      "type": "incident",
+      "reported_on": "2026-01-27",
+      "reporter_role": "Operations analyst",
+      "channel": "phone",
+      "category": "printer_network",
+      "status": "resolved",
+      "title": "Branch office cannot reach any internal sites",
+      "description": "Nobody at the branch office can open the invoice desk or email. Phones work.",
+      "resolution_note": "Network team replaced a failed branch switch; service restored after two hours.",
+      "synthetic": true
+    },
+    {
+      "id": "DESK-1012",
+      "type": "ticket",
+      "reported_on": "2026-02-02",
+      "reporter_role": "Accounts receivable clerk",
+      "channel": "email",
+      "category": "data_correction",
+      "status": "closed",
+      "title": "Invoice saved against the wrong customer",
+      "description": "I picked a customer with a similar name and saved the invoice before noticing. What is the correct way to fix this?",
+      "resolution_note": "Finance procedure followed: credit request raised against the incorrect invoice and a new invoice prepared.",
+      "synthetic": true
+    },
+    {
+      "id": "DESK-1013",
+      "type": "ticket",
+      "reported_on": "2026-02-09",
+      "reporter_role": "Finance team lead",
+      "channel": "portal",
+      "category": "feature_request",
+      "status": "open",
+      "title": "Request: filter invoice history by date range",
+      "description": "The history search works with customer names and invoice numbers, but at quarter end we want to see all invoices between two dates.",
+      "resolution_note": "Logged for the product owner backlog.",
+      "synthetic": true
+    },
+    {
+      "id": "DESK-1015",
+      "type": "ticket",
+      "reported_on": "2026-02-24",
+      "reporter_role": "Product data coordinator",
+      "channel": "portal",
+      "category": "new_product_setup",
+      "status": "closed",
+      "title": "Set up new customer account for a reseller",
+      "description": "A new reseller signed last week. They need to appear in the customer list so billing can invoice their first order.",
+      "resolution_note": "Customer master record created by the customer data team.",
+      "synthetic": true
+    },
+    {
+      "id": "DESK-1016",
+      "type": "ticket",
+      "reported_on": "2026-03-03",
+      "reporter_role": "Accounts receivable clerk",
+      "channel": "phone",
+      "category": "hardware",
+      "status": "closed",
+      "title": "Second monitor flickering",
+      "description": "My second screen keeps flickering, which makes it hard to compare invoice lines with the order sheet.",
+      "resolution_note": "Cable replaced at desk.",
+      "synthetic": true
+    },
+    {
+      "id": "DESK-1018",
+      "type": "ticket",
+      "reported_on": "2026-03-18",
+      "reporter_role": "Finance team lead",
+      "channel": "email",
+      "category": "holiday_schedule",
+      "status": "closed",
+      "title": "Good Friday month-end cover",
+      "description": "Month-end close falls close to the Good Friday holiday. Please confirm help-desk cover hours for that weekend.",
+      "resolution_note": "Cover hours confirmed and circulated.",
+      "synthetic": true
+    },
+    {
+      "id": "DESK-1019",
+      "type": "ticket",
+      "reported_on": "2026-04-01",
+      "reporter_role": "Accounts receivable clerk",
+      "channel": "portal",
+      "category": "report_formatting",
+      "status": "closed",
+      "title": "Invoice preview prints across two pages",
+      "description": "When I print the invoice preview from the browser, the total ends up alone on a second page.",
+      "resolution_note": "Suggested browser print scaling of 90 percent; layout request logged.",
+      "synthetic": true
+    },
+    {
+      "id": "DESK-1020",
+      "type": "ticket",
+      "reported_on": "2026-04-14",
+      "reporter_role": "Credit controller",
+      "channel": "portal",
+      "category": "training_question",
+      "status": "closed",
+      "title": "What should go in the credit reason field?",
+      "description": "Is there a standard list of reasons for credit requests, or can I type anything?",
+      "resolution_note": "Shared the finance team's agreed reason wording.",
+      "synthetic": true
+    },
+    {
+      "id": "DESK-1021",
+      "type": "incident",
+      "reported_on": "2026-05-05",
+      "reporter_role": "Operations analyst",
+      "channel": "phone",
+      "category": "application_behaviour",
+      "status": "resolved",
+      "title": "Invoice desk showed an error page for about twenty minutes",
+      "description": "From about 08:40 the desk showed an error when we opened it. It came back on its own before 09:00. A few colleagues saw the same.",
+      "resolution_note": "Service recovered without intervention. Infrastructure team noted a host restart in the same window; link to the desk not confirmed.",
+      "synthetic": true
+    },
+    {
+      "id": "DESK-1023",
+      "type": "ticket",
+      "reported_on": "2026-07-07",
+      "reporter_role": "Tax accountant",
+      "channel": "portal",
+      "category": "access_request",
+      "status": "closed",
+      "title": "Read-only access for external auditors",
+      "description": "External auditors arrive next month and want to look at invoice history and credit notes. Can they get view-only access for two weeks?",
+      "resolution_note": "Declined direct access per policy; finance provided exported documents instead.",
+      "synthetic": true
+    },
+    {
+      "id": "DESK-1025",
+      "type": "ticket",
+      "reported_on": "2026-09-08",
+      "reporter_role": "Finance team lead",
+      "channel": "email",
+      "category": "training_question",
+      "status": "closed",
+      "title": "Refresher session for new billing staff",
+      "description": "Three new billing staff started this quarter. Could someone run a one-hour walkthrough of preparing invoices, credit requests and the reports?",
+      "resolution_note": "Session booked with a senior clerk as presenter.",
+      "synthetic": true
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:02.935
+The IDE is recreated, but every
+Bob reply in the terminal is real:
+
+2
+00:00:02.935 --> 00:00:07.960
+we ran small probes with IBM Bob Shell on a throwaway copy
+of the kit, shortening only task IDs and folder paths.
+
+3
+00:00:08.000 --> 00:00:13.003
+Where a file sits, and what it says, changes what Bob
+does. Every run answers four questions from your files:
+
+4
+00:00:13.003 --> 00:00:17.960
+who Bob is, what he knows, what he can reach, and what
+he may do. We put a probe in most places and watched.
+
+5
+00:00:18.000 --> 00:00:24.554
+Here are the files that shape a Bob run, and which
+question each one answers, as IBM documents them.
+
+6
+00:00:24.554 --> 00:00:31.960
+The probes that follow test most of this. Files in the
+project override the same files in your global Bob folder.
+
+7
+00:00:32.000 --> 00:00:38.440
+First: who is Bob right now? That's the
+mode, defined in custom modes dot yaml.
+
+8
+00:01:04.241 --> 00:01:05.795
+Second: what does he know?
+
+9
+00:01:05.795 --> 00:01:11.710
+That depends on the root AGENTS file, the rules and
+the skills, and on exactly where each one sits.
+
+10
+00:01:11.750 --> 00:01:19.884
+The root AGENTS.md is already in his context. Our
+probe copy's version holds one codeword rule.
+
+11
+00:01:19.884 --> 00:01:24.080
+Bob replied KIWI-ROOT-AGENTS, with no tool calls.
+
+12
+00:01:24.120 --> 00:01:31.190
+Bob's own /init drafted the kit's version. bob run
+doesn't expand /init, so we piped its prompt in.
+
+13
+00:01:31.190 --> 00:01:34.190
+Bob read the repository and wrote a draft.
+
+14
+00:02:55.841 --> 00:03:04.258
+Third: what can he reach? The files you
+hide from him, and the servers you connect.
+
+15
+00:03:15.220 --> 00:03:16.803
+No MCP tool is pre-approved.
+
+16
+00:03:16.803 --> 00:03:22.230
+alwaysAllow is empty, and the guard hook's code
+allows only a short list of read-only MCP tools.
+
+17
+00:03:22.230 --> 00:03:23.700
+MCP was off in our probes.
+
+18
+00:03:23.740 --> 00:03:33.750
+Fourth: what may he do? Past the mode's edit rule, we watched
+two layers: the wording of the rules, and the guard hook.
+
+19
+00:03:33.790 --> 00:03:42.840
+Bob saw through a fake “authorised test”. He refused, citing
+the rules: labels are not approval, and made no tool calls.
+
+20
+00:04:04.774 --> 00:04:12.520
+Before you trust a Bob run, check these.
+The ones marked observed, we saw Bob do.
+
+21
+00:04:12.520 --> 00:04:16.440
+The others come from IBM's documentation.
+
+22
+00:04:21.774 --> 00:04:27.341
+Try it yourself: put a codeword rule in a
+rules folder for your mode, and ask for it.
+
+23
+00:04:27.341 --> 00:04:33.760
+If the codeword doesn't come back, Bob never saw
+the rule. Every reply in this video is Bob's own.

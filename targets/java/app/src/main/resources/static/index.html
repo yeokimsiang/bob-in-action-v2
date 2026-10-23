@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Ingram Trials invoice desk</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header><div class="brand"><span class="brand-mark" aria-hidden="true">IT</span><span class="brand-name">Ingram Trials</span><strong>Invoice Desk</strong></div><div class="tag">Operations · 13 Oct 2026</div></header>
+<main>
+  <aside>
+    <h2>Desk menu</h2>
+    <a href="#prepare">Prepare invoice</a><a href="#history">Invoice history</a><a href="#credits">Credit notes</a><a href="#operations">Operations</a>
+    <p class="aside-note">Distributor order and finance workspace</p>
+  </aside>
+  <div class="workspace">
+    <div class="intro"><p class="eyebrow">CUSTOMER ACCOUNTS / BILLING</p><h1>Invoices</h1><p>Prepare a customer invoice, then review posted documents and batch results.</p></div>
+    <div id="feedback" data-testid="feedback" role="status" aria-live="polite"></div>
+    <section id="prepare">
+      <h2>Prepare invoice</h2>
+      <div class="form-grid">
+        <label>Find customer<input data-testid="customer-search" id="customer-search" type="search" placeholder="Name"></label>
+        <label>Customer<select data-testid="customer-select" id="customer-select"></select></label>
+      </div>
+      <h3>Invoice lines</h3>
+      <div class="line-entry">
+        <label>Product<select data-testid="product-select" id="product-select"></select></label>
+        <label>Quantity<input data-testid="quantity-input" id="quantity-input" type="number" min="1" max="10000" value="1"></label>
+        <label>Unit price (SGD)<input data-testid="price-input" id="price-input" type="number" min="0.0001" max="100000" step="0.0001"></label>
+        <button data-testid="add-line" id="add-line" type="button">Add line</button>
+      </div>
+      <div class="table-wrap"><table><thead><tr><th>Product</th><th>Qty</th><th>Unit price</th><th></th></tr></thead><tbody id="draft-lines"></tbody></table></div>
+      <div class="actions"><button data-testid="preview-invoice" id="preview-invoice" type="button">Preview invoice</button><button data-testid="save-invoice" id="save-invoice" type="button" class="primary">Save invoice</button></div>
+      <div class="paper" id="preview-paper"><div class="paper-label">INVOICE PREVIEW</div><div id="preview-body">Add a line to calculate a preview.</div><div class="paper-total">Total <strong data-testid="preview-total" id="preview-total">SGD 0.00</strong></div></div>
+    </section>
+    <section id="history">
+      <div class="section-head"><h2>Invoice history</h2><label>Search invoices<input data-testid="invoice-search" id="invoice-search" type="search" placeholder="Customer or invoice number"></label></div>
+      <div class="table-wrap"><table><thead><tr><th>Invoice</th><th>Customer</th><th>Date</th><th>Total</th><th></th></tr></thead><tbody data-testid="invoice-history" id="invoice-history"></tbody></table></div>
+      <div id="invoice-detail" class="detail" aria-live="polite"></div>
+    </section>
+    <section id="credits">
+      <h2>Credit requests and notes</h2><p>Requests entered here are marked approved for this local demonstration. Run the credit job to issue notes.</p>
+      <div class="form-grid three">
+        <label>Invoice ID<input data-testid="credit-invoice" id="credit-invoice" type="number" min="1"></label>
+        <label>Net amount (SGD)<input data-testid="credit-amount" id="credit-amount" type="number" min="0.01" step="0.01"></label>
+        <label>Reason<input data-testid="credit-reason" id="credit-reason" type="text"></label>
+      </div>
+      <button data-testid="create-credit-request" id="create-credit-request" type="button" class="primary">Create approved request</button>
+      <div class="split"><div><h3>Requests</h3><ul id="credit-requests"></ul></div><div><h3>Issued notes</h3><ul id="credit-notes"></ul></div></div>
+    </section>
+    <section id="operations">
+      <h2>Operations</h2><p>Run the registered jobs manually or inspect the period reports.</p>
+      <div class="actions"><button data-testid="run-invoice-job" id="run-invoice-job" type="button">Run delivered-order invoices</button><button data-testid="run-credit-job" id="run-credit-job" type="button">Run credit notes</button></div>
+      <h3>Reports</h3>
+      <div class="report-controls"><label>Month<input id="report-month" type="month" value="2026-10"></label><button data-testid="monthly-report" id="monthly-report" type="button">Monthly sales</button><label>Year<input id="report-year" type="number" value="2026" min="2000" max="9999"></label><button data-testid="annual-gst-report" id="annual-gst-report" type="button">Annual GST</button></div>
+      <pre id="report-output" aria-live="polite"></pre>
+    </section>
+  </div>
+</main>
+<script src="/desk.js"></script>
+</body>
+</html>
